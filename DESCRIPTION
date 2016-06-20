@@ -1,0 +1,21 @@
+Package: hurricaneexposuredata
+Type: Package
+Title: Data Characterizing Exposure to Hurricanes in United States Counties
+Version: 0.0.0.9000
+Authors@R: c(person("Brooke", "Anderson",
+    email = "brooke.anderson@colostate.edu", role = c("aut", "cre")),
+    person("Meilin", "Yan",
+    email = "meilin.yan@colostate.edu", role = "aut"),
+    person("Joshua", "Ferreri",
+    email = "joshua.m.ferreri@gmail.com", role = "aut")
+    )
+Description: Includes data on distance- and rain-based exposure to Atlantic
+    basin tropical storms in United States counties. This package can be used in
+    conjunction with the "hurricaneexposure" package to explore, map, and
+    characterize exposure to tropical storms at the county leve. This work was
+    supported in part by grants from the National Institute of Environmental
+    Health Sciences (R00ES022631) and the National Science Foundation (1331399).
+URL: https://github.com/geanders/hurricaneexposuredata
+BugReports: https://github.com/geanders/hurricaneexposuredata/issues
+License: GPL-2
+LazyData: TRUE
