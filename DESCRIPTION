@@ -19,3 +19,4 @@ URL: https://github.com/geanders/hurricaneexposuredata
 BugReports: https://github.com/geanders/hurricaneexposuredata/issues
 License: GPL-2
 LazyData: TRUE
+RoxygenNote: 5.0.1
