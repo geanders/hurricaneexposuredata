@@ -63,7 +63,7 @@
 #' @references
 #' Demuth J, DeMaria M, Knaff JA, 2006. Improvement of advanced microwave
 #' sounder unit tropical cyclone intensity and size estimation algorithms.
-#' Journal of Applied Meteorology 45:1573-1581
+#' Journal of Applied Meteorology and Climatology 45:1573-1581
 #'
 "hurr_tracks"
 
