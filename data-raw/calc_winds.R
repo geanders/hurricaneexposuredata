@@ -24,10 +24,10 @@ calc_wind_cat <- function(quadrant, distance, winds){
 calc_county_wind <- function(storm_point, county_centers){
 
   winds <- storm_point %>%
-    select(contains("radius")) %>%
-    gather(value = "wind_radius") %>%
-    mutate(key = gsub("radius_", "", key)) %>%
-    separate(key, c("wind_speed", "quad"), sep = "_")
+    dplyr::select(contains("radius")) %>%
+    tidyr::gather(value = "wind_radius") %>%
+    dplyr::mutate_(key = ~ gsub("radius_", "", key)) %>%
+    tidyr::separate(key, c("wind_speed", "quad"), sep = "_")
 
   dist_to_storm <- geosphere::distHaversine(p1 = as.matrix(county_centers[ ,
                                                                            c("longitude", "latitude")]),
@@ -119,8 +119,8 @@ plot_county_wind_obs <- function(storm_point, county_centers, state_zoom){
 # Code to read in data and calculate winds
 
 # Read in extended hurricane tracks
-hurr_tracks <- read.fwf("http://rammb.cira.colostate.edu/research/tropical_cyclones/tc_extended_best_track_dataset/ebtrk_atlc_1988_2014.txt",
-                        widths = c(7, 10, 2, 2, 3, 5, 5, 7, 3, 5,
+hurr_tracks <- read.fwf("http://rammb.cira.colostate.edu/research/tropical_cyclones/tc_extended_best_track_dataset/data/ebtrk_atlc_1988_2015.txt",
+                        widths = c(7, 10, 2, 2, 3, 5, 5, 6, 4, 5,
                                    4, 4, 5, 3, 4, 3, 3, 3,
                                    4, 3, 3, 3, 4, 3, 3, 3, 2, 6, 1),
                         na.strings = c("-99"))
@@ -142,7 +142,7 @@ format_longitude <- function(lon){
   return(out)
 }
 hurr_tracks <- select(hurr_tracks, -storm_id) %>%
-  mutate(storm_name = as.character(storm_name),
+  dplyr::mutate(storm_name = as.character(storm_name),
          storm_name = paste0(substr(storm_name, 1, 1),
                              substr(tolower(storm_name), 2,
                                     nchar(storm_name))),
@@ -176,7 +176,7 @@ data(county_centers)
 #     select(date, latitude, longitude, starts_with("radius")) %>%
 #     gather(metric, radius, -date, -latitude, -longitude) %>%
 #     group_by(date) %>%
-#     summarize(n_missing = sum(is.na(radius)),
+#     dplyr::summarize(n_missing = 12 - sum(!is.na(radius)),
 #               latitude = first(latitude),
 #               longitude = first(longitude))
 #
@@ -195,11 +195,14 @@ data(county_centers)
 
 # Check calculation of wind categories for a single storm point
 
-katrina <- filter(hurr_tracks, storm_id == "Katrina-2005" &
-                    date == "200508291800")
+# katrina <- filter(hurr_tracks, storm_id == "Katrina-2005" &
+#                     date == "200508291800")
+katrina <- filter(hurr_tracks, storm_id == "Sandy-2012" &
+                    date == "201210291800")
 storm_point <- katrina
 
-katrina_wind <- calc_county_wind(katrina, filter(county_centers,
+katrina_wind <- calc_county_wind(storm_point = katrina,
+                                 county_centers = filter(county_centers,
                                               state_name %in%
                                                 c("Louisiana",
                                                   "Arkansas",
@@ -210,6 +213,7 @@ katrina_wind <- calc_county_wind(katrina, filter(county_centers,
                                                   "Oklahoma",
                                                   "Florida")))
 
+map_data <- get_map("Louisiana", zoom = 6, maptype = "toner")
 ggmap(map_data, extent = "device") +
   geom_point(data = katrina, aes(x = longitude, y = latitude),
              color = "red", shape = 9, size = 3) +
@@ -346,6 +350,7 @@ a$ggplot_scale <- scale_fill_manual(name = "Maximum sustained wind speed",
                                               "0 to 33 kts" = "white"))
 a$render()
 
+storm_tracks <- filter(hurr_tracks, storm_id == "Katrina-2005")
 eastern_states <- c("alabama", "arkansas", "connecticut", "delaware",
                     "district of columbia", "florida", "georgia", "illinois",
                     "indiana", "iowa", "kansas", "kentucky", "louisiana",
@@ -378,7 +383,7 @@ a$ggplot_scale <- scale_fill_manual(name = "Maximum sustained wind speed",
                                                "34 to 49 kts" = "yellow",
                                                "0 to 33 kts" = "white"))
 storm_tracks <- hurr_tracks %>%
-  filter(storm_id == "Sandy-2012")
+  dplyr::filter(storm_id == "Sandy-2012")
 a$render() + geom_path(data = storm_tracks,
                        aes(x = longitude, y = latitude, group = NA),
                        color = "navy")
@@ -395,7 +400,7 @@ a$ggplot_scale <- scale_fill_manual(name = "Maximum sustained wind speed",
                                                "34 to 49 kts" = "yellow",
                                                "0 to 33 kts" = "white"))
 storm_tracks <- hurr_tracks %>%
-  filter(storm_id == "Ike-2008")
+  dplyr::filter(storm_id == "Ike-2008")
 a$render() +
   geom_path(data = storm_tracks,
                        aes(x = longitude, y = latitude, group = NA),
@@ -422,8 +427,4 @@ a$render() +
             color = "navy") +
   geom_point(data = storm_tracks,
              aes(x = longitude, y = latitude, group = NA))
-
-
-
-
 
