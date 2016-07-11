@@ -27,7 +27,7 @@ format_longitude <- function(lon){
         return(out)
 }
 hurr_tracks <- select(hurr_tracks, -storm_id) %>%
-        mutate(storm_name = as.character(storm_name),
+        dplyr::mutate(storm_name = as.character(storm_name),
                storm_name = paste0(substr(storm_name, 1, 1),
                                   substr(tolower(storm_name), 2,
                                          nchar(storm_name))),
@@ -37,7 +37,7 @@ hurr_tracks <- select(hurr_tracks, -storm_id) %>%
                day = sprintf("%02d", day),
                hour = sprintf("%02d", hour),
                minute = "00") %>%
-        rename(wind = max_wind) %>%
+        dplyr::rename(wind = max_wind) %>%
         select(storm_id, year, month, day, hour, minute, latitude, longitude,
                wind)
 hurr_tracks <- tidyr::unite_(hurr_tracks, "date",

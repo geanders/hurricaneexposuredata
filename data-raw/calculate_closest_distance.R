@@ -4,7 +4,7 @@ library(lubridate)
 library(hurricaneexposure)
 
 data(county_centers, package = "hurricaneexposure")
-data(hurr_tracks, package = "hurricaneexposure")
+data(hurr_tracks, package = "hurricaneexposuredata")
 
 # install_github("geanders/stormwindmodel")
 library(stormwindmodel)
