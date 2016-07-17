@@ -8,9 +8,9 @@ library(devtools)
 library(dplyr)
 
 storm_winds <- vector("list",
-                      length = 2)
-                      #length = length(storms))
-for(i in 1:2){
+                      #length = 10)
+                      length = length(storms))
+for(i in 1:length(storm_winds)){
   print(storms[i])
   storm_track <- subset(hurr_tracks, storm_id == storms[i])
   winds <- grid_winds_katrina <- get_grid_winds(hurr_track = storm_track,
