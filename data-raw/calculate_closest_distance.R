@@ -66,6 +66,17 @@ closest_dist <- add_local_time(df = closest_dist,
         mutate(closest_time_utc = format(closest_time_utc,
                                          "%Y-%m-%d %H:%M"))
 
+# Limit hurricane tracks to only storms within 250 km of at least one county
+us_storms <- closest_dist %>%
+  dplyr::group_by(storm_id) %>%
+  dplyr::summarize(closest_county = min(storm_dist)) %>%
+  dplyr::filter(closest_county <= 250)
+hurr_tracks <- hurr_tracks %>%
+  dplyr::filter(storm_id %in% us_storms$storm_id)
+
+use_data(hurr_tracks, overwrite = TRUE)
+
+closest_dist <- closest_dist %>%
+  dplyr::filter(storm_id %in% us_storms$storm_id)
+
 use_data(closest_dist, overwrite = TRUE)
-
-
