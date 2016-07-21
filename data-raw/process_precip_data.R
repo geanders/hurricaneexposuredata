@@ -12,10 +12,12 @@ check_dates <- dplyr::select(closest_dist, -storm_dist) %>%
                day_b1 = day_0 - days(1),
                day_b2 = day_0 - days(2),
                day_b3 = day_0 - days(3),
+               day_b4 = day_0 - days(4),
+               day_b5 = day_0 - days(5),
                day_a1 = day_0 + days(1),
                day_a2 = day_0 + days(2),
                day_a3 = day_0 + days(3)) %>%
-        dplyr::select(storm_id, fips, day_b3, day_b2, day_b1,
+        dplyr::select(storm_id, fips, day_b5, day_b4, day_b3, day_b2, day_b1,
                day_0, day_a1, day_a2, day_a3) %>%
         tidyr::gather(key = lag, value = day, -storm_id, -fips) %>%
         dplyr::mutate(day = as.numeric(format(day, "%Y%m%d")))
