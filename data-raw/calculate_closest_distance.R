@@ -3,7 +3,7 @@ library(dplyr)
 library(lubridate)
 library(hurricaneexposure)
 
-data(county_centers, package = "hurricaneexposure")
+data(county_centers, package = "hurricaneexposuredata")
 data(hurr_tracks, package = "hurricaneexposuredata")
 
 # install_github("geanders/stormwindmodel")
