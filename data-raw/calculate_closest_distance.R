@@ -15,12 +15,12 @@ calc_closest_dist <- function(this_storm = "Floyd-1999"){
         # Linearly impute tracks to every 15 minutes
         storm_tracks <- create_full_track(hurr_track = storm_tracks,
                                           tint = 0.25) %>%
-                mutate(lon = -1 * lon)
+                dplyr::mutate(tclon = -1 * tclon)
 
         # Calculate distance from county center to storm path
         storm_county_distances <- spDists(
                 as.matrix(county_centers[,c("longitude", "latitude")]),
-                as.matrix(storm_tracks[,c("lon", "phi")]),
+                as.matrix(storm_tracks[,c("tclon", "tclat")]),
                 longlat = TRUE) # Return distance in kilometers
 
         min_locs <- apply(storm_county_distances, 1, which.min)
@@ -38,8 +38,8 @@ calc_closest_dist <- function(this_storm = "Floyd-1999"){
 
         closest_dist <- mutate(county_centers,
                                closest_date = storm_tracks$date[min_locs],
-                               storm_lat = storm_tracks$phi[min_locs],
-                               storm_long = storm_tracks$lon[min_locs],
+                               storm_lat = storm_tracks$tclat[min_locs],
+                               storm_long = storm_tracks$tclon[min_locs],
                                storm_dist = min_dists) %>%
                 filter(state_name %in% study_states) %>%
                 mutate(closest_date = format(closest_date, "%Y%m%d%H%M"),
