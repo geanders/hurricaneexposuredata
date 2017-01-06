@@ -187,3 +187,21 @@
 #'    data using the \code{stormwindmodel} package to implement the
 #'    Willoughby wind model.
 "storm_winds"
+
+#' County storm event listings associated with tropical storms
+#'
+#' A list with any county-level storm event listings from NOAA Storm
+#' Events that were near an Atlantic basin tropical storm in location and time.
+#' Events that were reported at the forecast zonel were, if possible, linked
+#' with the appropriate county.
+#'
+#' @format A list with 137 elements. Each element is named after a specific
+#'    tropical storm and is a dataframe with 2 variables:
+#' \describe{
+#'   \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
+#'              code}
+#'   \item{events}{List of extreme events for a specific county and storm.}
+#' }
+#'
+#' @note Listings are generated using the \code{noaastormevents} package.
+"storm_events"
