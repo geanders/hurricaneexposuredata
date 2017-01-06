@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^data-raw$
 ^writing$
+^\.travis\.yml$
+^README-.*\.png$
