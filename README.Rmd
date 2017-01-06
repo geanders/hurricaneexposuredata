@@ -11,3 +11,7 @@ knitr::opts_chunk$set(
   fig.path = "README-"
 )
 ```
+
+[![Travis-CI Build Status](https://travis-ci.org/geanders/hurricaneexposuredata.svg?branch=master)](https://travis-ci.org/geanders/hurricaneexposuredata)
+
+R package with hazard-based exposure data for U.S. counties for historical tropical storms in the Atlantic basin.
