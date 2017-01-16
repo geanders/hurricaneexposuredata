@@ -2,6 +2,7 @@ Package: hurricaneexposuredata
 Type: Package
 Title: Data Characterizing Exposure to Hurricanes in United States Counties
 Version: 0.0.0.9000
+Date: 2017-01-16
 Authors@R: c(person("Brooke", "Anderson",
     email = "brooke.anderson@colostate.edu", role = c("aut", "cre")),
     person("Meilin", "Yan",
@@ -9,7 +10,7 @@ Authors@R: c(person("Brooke", "Anderson",
     person("Joshua", "Ferreri",
     email = "joshua.m.ferreri@gmail.com", role = "aut")
     )
-Description: Includes data on distance- and rain-based exposure to Atlantic
+Description: Includes data on distance-, rain-, and event-based exposure to Atlantic
     basin tropical storms in United States counties. This package can be used in
     conjunction with the "hurricaneexposure" package to explore, map, and
     characterize exposure to tropical storms at the county leve. This work was
