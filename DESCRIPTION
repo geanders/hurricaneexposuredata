@@ -5,6 +5,8 @@ Version: 0.0.0.9000
 Date: 2017-01-16
 Authors@R: c(person("Brooke", "Anderson",
     email = "brooke.anderson@colostate.edu", role = c("aut", "cre")),
+    person("Andrea", "Schumacher",
+    email = "andrea.schumacher@colostate.edu", role = c("aut")),
     person("Meilin", "Yan",
     email = "meilin.yan@colostate.edu", role = "aut"),
     person("Joshua", "Ferreri",
