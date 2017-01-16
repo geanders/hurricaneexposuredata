@@ -12,9 +12,9 @@
              the storm.}
   \item{vmax_sust}{Maximum modeled sustained wind speed in the county during
              the storm.}
-  \item{gust_dur}{Time gust wind was above [x] [units] in the county during
+  \item{gust_dur}{Time gust wind was above 20 m / s in the county during
              the storm.}
-  \item{sust_dur}{Time sustained wind was above [x] [units] in the county during
+  \item{sust_dur}{Time sustained wind was above 20 m / s in the county during
              the storm.}
   \item{storm_id}{Unique storm identifier with the storm name and year,
              separated by a hyphen(e.g., "Alberto-1988",

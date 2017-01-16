@@ -17,7 +17,7 @@ storm_events
 \description{
 A list with any county-level storm event listings from NOAA Storm
 Events that were near an Atlantic basin tropical storm in location and time.
-Events that were reported at the forecast zonel were, if possible, linked
+Events that were reported at the forecast zone were, if possible, linked
 with the appropriate county.
 }
 \note{
