@@ -73,9 +73,9 @@
 #' of at least one US county.
 #'
 #' @details The minimum distance was calculated using the Great Circle method,
-#' using the \code{\link{spDist}} function from the \code{\link{sp}} package.
+#' using the \code{spDist} function from the \code{sp} package.
 #' The time of the closest approach of the storm to each county was converted from UTC
-#' to local time using the \code{\link{countytimezones}} package for the \code{local_time}
+#' to local time using the \code{countytimezones} package for the \code{local_time}
 #' and \code{closest_date} columns.
 #'
 #' @format A dataframe with 325,856 rows and 4 variables:
@@ -191,7 +191,7 @@
 #' }
 #'
 #' @note These wind speeds were modeled from hurricane best tracks
-#'    data using the \code{\link{stormwindmodel}} package to implement the
+#'    data using the \code{stormwindmodel} package to implement the
 #'    Willoughby wind model. See the "Details" vignette from that package
 #'    (available at \url{https://cran.r-project.org/web/packages/stormwindmodel/vignettes/Details.html})
 #'    for extensive details on this modeling process.
@@ -277,7 +277,7 @@
 #'    likely experiencing at least 64-knot winds during the course of the storm.
 #'
 #'    Gust wind speed was calculated using a gust factor of 1.49 applied to the estimated
-#'    sustained wind speed (see the "Details" vignette of the \code{\link{stormwindmodel}}
+#'    sustained wind speed (see the "Details" vignette of the \code{stormwindmodel}
 #'    package for more details on the choice of this gust factor). Durations were based
 #'    on the number of minutes winds were above 34 knots in the county over the course of
 #'    the storm.

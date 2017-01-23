@@ -34,9 +34,9 @@ of at least one US county.
 }
 \details{
 The minimum distance was calculated using the Great Circle method,
-using the \code{\link{spDist}} function from the \code{\link{sp}} package.
+using the \code{spDist} function from the \code{sp} package.
 The time of the closest approach of the storm to each county was converted from UTC
-to local time using the \code{\link{countytimezones}} package for the \code{local_time}
+to local time using the \code{countytimezones} package for the \code{local_time}
 and \code{closest_date} columns.
 }
 \keyword{datasets}

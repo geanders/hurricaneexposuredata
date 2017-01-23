@@ -46,7 +46,7 @@ To calculate the wind values in this dataset, we used the wind radii from
    likely experiencing at least 64-knot winds during the course of the storm.
 
    Gust wind speed was calculated using a gust factor of 1.49 applied to the estimated
-   sustained wind speed (see the "Details" vignette of the \code{\link{stormwindmodel}}
+   sustained wind speed (see the "Details" vignette of the \code{stormwindmodel}
    package for more details on the choice of this gust factor). Durations were based
    on the number of minutes winds were above 34 knots in the county over the course of
    the storm.
