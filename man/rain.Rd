@@ -3,13 +3,13 @@
 \docType{data}
 \name{rain}
 \alias{rain}
-\title{Rainfall for a week-long window for tropical storms}
-\format{A dataframe with 5,417,356 rows and 5 variables:
+\title{Rainfall for US counties during Atlantic basin tropical storms}
+\format{A dataframe with 2,673,936 rows and 5 variables:
 \describe{
-  \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
-             code}
-  \item{storm_id}{Unique storm identifier with the storm name and year,
-                 separated by a hyphen(e.g., "Alberto-1988",
+  \item{fips}{A character string with the county's 5-digit Federal Information
+              Processing Standard (FIPS) code}
+  \item{storm_id}{A character string with a unique storm identifier with the storm
+                 name and year, separated by a hyphen (e.g., "Alberto-1988",
                  "Katrina-2005")}
   \item{lag}{Number of days from date when storm was closest to the county
              (e.g., \code{0} indicates the date the storm was closest to the
@@ -17,16 +17,18 @@
              storm was closest to the county)}
   \item{precip}{Average daily precipitation, in millimeters, for NLDAS grid
    points with the county for the given lag day}
-  \item{precip_max}{Maximum daily precipitation, in millimeters, for NLDAS grid
+  \item{precip_max}{Maximum daily precipitation, in millimeters, across the NLDAS grid
    points with the county for the given lag day}
 }}
 \usage{
 rain
 }
 \description{
-A dataframe that gives the total rainfall in US counties for a one-week
-window centered at the date on which the tropical storm was closest
-to the county for Atlantic basin storms between 1988 and 2011.
+A dataframe that gives daily rainfall in US counties from five days before to
+three days after a tropical storm's closest approach to the county. This dataset
+covers all Atlantic-basin tropical storms between 1988 and 2011 for storms that came
+within 250 km of at least one US county. Only counties in the eastern half of the US
+are included.
 }
 \details{
 This dataset was aggregated from hourly, 1/8 degree gridded data
@@ -51,6 +53,11 @@ This data set is based on data acquired as part of the mission of
    are available for download through the Center for Disease Control's
    Wide-ranging Online Data for Epidemiological Research (WONDER) system
    (see references).
+}
+\author{
+Bill Crosson \email{bill.crosson@nasa.gov},
+   Mohammad Alhamdan \email{mohammad.alhamdan@nasa.gov}, and
+   Brooke Anderson \email{brooke.anderson@colostate.edu}
 }
 \references{
 Al-Hamdan MZ, Crosson WL, Economou SA, Estes MG, Estes SM, Hemmings SN,

@@ -4,25 +4,23 @@
 \name{closest_dist}
 \alias{closest_dist}
 \title{Closest distances between counties and a storm track}
-\format{A dataframe with 876,936 rows and 4 variables:
+\format{A dataframe with 325,856 rows and 4 variables:
 \describe{
-  \item{storm_id}{Unique storm identifier with the storm name and year,
-                 separated by a hyphen(e.g., "Alberto-1988",
-                 "Katrina-2005")}
-  \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
-             code}
-  \item{closest_date}{Date (based on local time) of the closest
-                         approach of the storm to the county's population
-                         mean center.}
-  \item{storm_dist}{Minimum distance (in kilometers) between the storm's
+  \item{storm_id}{Character string with unique storm identifier with the storm name
+                  and year, separated by a hyphen (e.g., "Alberto-1988",
+                  "Katrina-2005")}
+  \item{fips}{Character string with the county's 5-digit Federal Information
+              Processing Standard (FIPS) code}
+ \item{closest_time_utc}{Character string of time, in UTC, of the closest approach of
+                         the storm to the county's population mean center, based on
+                         storm tracks linearly interpolated to 15-minute increments.}
+  \item{storm_dist}{Numeric of the minimum distance (in kilometers) between the storm's
                     track and the county's population mean center.}
-  \item{local_time}{Local time of the closest approach of the storm to the
-                       county's population mean center, based on storm tracks
-                       linearly interpolated to 15-minute increments.}
- \item{closest_time_utc}{Time, in UTC, of the closest approach of the
-                            storm to the county's population mean center,
-                            based on storm tracks linearly interpolated to
-                            15-minute increments.}
+  \item{local_time}{Character string of local time of the closest approach of the storm to the
+                    county's population mean center, based on storm tracks linearly
+                    interpolated to 15-minute increments.}
+  \item{closest_date}{Character string with date (based on local time) of the closest
+                      approach of the storm to the county's population mean center.}
 }}
 \usage{
 closest_dist
@@ -30,11 +28,16 @@ closest_dist
 \description{
 A dataframe that gives the distance and date-time for the closest
 approach of each tropical storm to the mean population center of each
-US county in states in the eastern half of the United States.
+US county in states in the eastern half of the United States. This data includes
+all Atlantic-basin storms between 1988 and 2015 that came within at least 250 km
+of at least one US county.
 }
 \details{
 The minimum distance was calculated using the Great Circle method,
-using the \code{spDist} function from the \code{sp} package.
+using the \code{\link{spDist}} function from the \code{\link{sp}} package.
+The time of the closest approach of the storm to each county was converted from UTC
+to local time using the \code{\link{countytimezones}} package for the \code{local_time}
+and \code{closest_date} columns.
 }
 \keyword{datasets}
 

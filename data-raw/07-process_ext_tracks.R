@@ -49,4 +49,7 @@ ext_tracks_wind <- lapply(ext_tracks_files, function(x){
          sust_dur = sust_duration) %>%
   mutate(fips = str_pad(fips, width = 5, side = "left", pad = "0"))
 
+ext_tracks_wind <- ext_tracks_wind %>%
+  select(-gust_dur)
+
 devtools::use_data(ext_tracks_wind, overwrite = TRUE)

@@ -31,8 +31,17 @@ center (based on the 2010 U.S. Census).
 }
 \note{
 These wind speeds were modeled from hurricane best tracks
-   data using the \code{stormwindmodel} package to implement the
-   Willoughby wind model.
+   data using the \code{\link{stormwindmodel}} package to implement the
+   Willoughby wind model. See the "Details" vignette from that package
+   (available at \url{https://cran.r-project.org/web/packages/stormwindmodel/vignettes/Details.html})
+   for extensive details on this modeling process.
+}
+\author{
+Brooke Anderson \email{brooke.anderson@colostate.edu},
+Andrea Schumacher \email{andrea.schumacher@colostate.edu},
+Joshua Ferreri \email{joshua.m.ferreri@gmail.com},
+Seth Guikema \email{sguikema@umich.edu}, and
+Steven Quiring \email{quiring.10@osu.edu}
 }
 \keyword{datasets}
 

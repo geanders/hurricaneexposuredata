@@ -4,7 +4,7 @@
 \name{county_centers}
 \alias{county_centers}
 \title{Location of United States county centers of population}
-\format{A data frame with 3221 rows and 8 variables:
+\format{A data frame with 3,221 rows and 6 variables:
 \describe{
   \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
              code}

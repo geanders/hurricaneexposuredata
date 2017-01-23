@@ -8,14 +8,24 @@ Authors@R: c(person("Brooke", "Anderson",
     person("Andrea", "Schumacher",
     email = "andrea.schumacher@colostate.edu", role = c("aut")),
     person("Meilin", "Yan",
-    email = "meilin.yan@colostate.edu", role = "aut"),
+    email = "meilin.yan@colostate.edu", role = "ctb"),
     person("Joshua", "Ferreri",
-    email = "joshua.m.ferreri@gmail.com", role = "aut")
+    email = "joshua.m.ferreri@gmail.com", role = "ctb"),
+    person("", "", 
+    email = "", role = "aut"),
+    person("", "", 
+    email = "", role = "aut"),
+    person("Andrea", "Schumacher", 
+    email = "andrea.schumacher@colostate.edu", role = "aut"),
+    person("Seth", "Guikema",
+    email = "sguikema@umich.edu", role = c("ctb")),
+    person("Steven", "Quiring",
+    email = "quiring.10@osu.edu", role = c("ctb"))
     )
-Description: Includes data on distance-, rain-, and event-based exposure to Atlantic
-    basin tropical storms in United States counties. This package can be used in
-    conjunction with the "hurricaneexposure" package to explore, map, and
-    characterize exposure to tropical storms at the county leve. This work was
+Description: Includes data on distance-, rain-, and event-based exposure to 
+    Atlantic-basin tropical storms in United States counties. This package can be used 
+    in conjunction with the hurricaneexposure package to explore, map, and
+    characterize exposure to tropical storms at the county level. This work was
     supported in part by grants from the National Institute of Environmental
     Health Sciences (R00ES022631) and the National Science Foundation (1331399).
 URL: https://github.com/geanders/hurricaneexposuredata

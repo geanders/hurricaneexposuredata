@@ -4,14 +4,14 @@
 \name{hurr_tracks}
 \alias{hurr_tracks}
 \title{Storm tracks for Atlantic basin storms}
-\format{A data frame with 11,829 rows and 5 variables:
+\format{A data frame with 4,351 rows and 5 variables:
 \describe{
   \item{storm_id}{Unique storm identifier with the storm name and year,
                  separated by a hyphen(e.g., "Alberto-1988",
                  "Katrina-2005")}
-  \item{date}{Date and time of storm track recording, in Universal Time
-              Coordinate (UTC). This date is formated as
-              "\%Y\%m\%d\%H\%M".}
+  \item{date}{Character string with date and time of storm track recording, in
+              the Universal Time Coordinated (UTC) time zone. This date is formated
+              as \code{\%Y\%m\%d\%H\%M}.}
   \item{latitude}{Latitude of storm center, in decimal degrees}
   \item{longitude}{Longitude of storm center, in decimal degrees (note:
                    longitudes are given as negative values for
@@ -28,13 +28,9 @@ hurr_tracks
 }
 \description{
 A dataset containing the storm tracks for Atlantic basin tropical
-storms between 1988 and 2012, from the Extended Best Track Dataset for
-the Atlantic basin.
-}
-\details{
-This extended best tracks dataset is currently available for
-1988 to 2014. This dataset is based on the HURDAT best tracks dataset.
-For more details, see the source and reference given below.
+storms between 1988 and 2015, from the Extended Best Track Dataset for
+the Atlantic basin. Only storms that came within 250 km of at least
+one US county are included.
 }
 \references{
 Demuth J, DeMaria M, Knaff JA, 2006. Improvement of advanced microwave

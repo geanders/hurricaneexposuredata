@@ -4,7 +4,7 @@
 \name{ext_tracks_wind}
 \alias{ext_tracks_wind}
 \title{Extended best tracks county wind speeds for historical storms}
-\format{A dataframe with 162,928 rows and 6 variables:
+\format{A dataframe with 162,928 rows and 5 variables:
 \describe{
   \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
              code}
@@ -12,20 +12,52 @@
              the storm.}
   \item{vmax_sust}{Maximum modeled sustained wind speed in the county during
              the storm.}
-  \item{gust_dur}{Time gust wind was above 20 m / s in the county during
-             the storm.}
-  \item{sust_dur}{Time sustained wind was above 20 m / s in the county during
+  \item{sust_dur}{Minutes sustained wind was above 34 knots in the county during
              the storm.}
   \item{storm_id}{Unique storm identifier with the storm name and year,
              separated by a hyphen(e.g., "Alberto-1988",
              "Katrina-2005")}
 }}
+\source{
+Extended best tracks data were obtained from:
+\url{http://rammb.cira.colostate.edu/research/tropical_cyclones/tc_extended_best_track_dataset/}
+}
 \usage{
 ext_tracks_wind
 }
 \description{
 A dataframe with storm winds based on extended best tracks hurricane
 data for historical Atlantic basin storms.
+}
+\details{
+To calculate the wind values in this dataset, we used the wind radii from
+   the Extended Best Tracks dataset for Atlantic-basin tropical storms (see the
+   reference and source). These wind radii provide the radius in each of four quadrants
+   (northeast, southeast, southwest, and northwest) from the storm's center for each
+   of the 6-hour storm observations. We interpolated this data to every 15 minutes
+   and scaled each radius to 0.85 of its full value (the original radius gives the
+   maximum extent of 64-knot, 50-knot, and 34-knot winds in each quadrant). For each
+   15-minute point along the storm's track, we determined which counties fell within
+   each wind radius. We then determined, for each county, the maximum wind value
+   over the course of the storm. These wind values are limited to 34 knots, 50 knots,
+   and 64 knots; if a county is reported as having 64-knot winds in this dataset, it
+   therefore means that the county fell within 0.85 times the 64-knot maximum wind
+   radius at least once during the storm, and so can be interpreted as the county
+   likely experiencing at least 64-knot winds during the course of the storm.
+
+   Gust wind speed was calculated using a gust factor of 1.49 applied to the estimated
+   sustained wind speed (see the "Details" vignette of the \code{\link{stormwindmodel}}
+   package for more details on the choice of this gust factor). Durations were based
+   on the number of minutes winds were above 34 knots in the county over the course of
+   the storm.
+}
+\author{
+Andrea Schumacher \email{andrea.schumacher@colostate.edu}
+}
+\references{
+Demuth J, DeMaria M, Knaff JA, 2006. Improvement of advanced microwave sounder
+unit tropical cyclone intensity and size estimation algorithms. Journal of Applied
+Meteorology 45:1573-1581.
 }
 \keyword{datasets}
 

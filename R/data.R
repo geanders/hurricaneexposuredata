@@ -9,7 +9,7 @@
 #' 2010 US Census. For more details on the calculation of these mean centers of
 #' population, see the reference below.
 #'
-#' @format A data frame with 3221 rows and 8 variables:
+#' @format A data frame with 3,221 rows and 6 variables:
 #' \describe{
 #'   \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
 #'              code}
@@ -34,21 +34,18 @@
 #' Storm tracks for Atlantic basin storms
 #'
 #' A dataset containing the storm tracks for Atlantic basin tropical
-#' storms between 1988 and 2012, from the Extended Best Track Dataset for
-#' the Atlantic basin.
+#' storms between 1988 and 2015, from the Extended Best Track Dataset for
+#' the Atlantic basin. Only storms that came within 250 km of at least
+#' one US county are included.
 #'
-#' @details This extended best tracks dataset is currently available for
-#' 1988 to 2014. This dataset is based on the HURDAT best tracks dataset.
-#' For more details, see the source and reference given below.
-#'
-#' @format A data frame with 11,829 rows and 5 variables:
+#' @format A data frame with 4,351 rows and 5 variables:
 #' \describe{
 #'   \item{storm_id}{Unique storm identifier with the storm name and year,
 #'                  separated by a hyphen(e.g., "Alberto-1988",
 #'                  "Katrina-2005")}
-#'   \item{date}{Date and time of storm track recording, in Universal Time
-#'               Coordinate (UTC). This date is formated as
-#'               "\%Y\%m\%d\%H\%M".}
+#'   \item{date}{Character string with date and time of storm track recording, in
+#'               the Universal Time Coordinated (UTC) time zone. This date is formated
+#'               as \code{\%Y\%m\%d\%H\%M}.}
 #'   \item{latitude}{Latitude of storm center, in decimal degrees}
 #'   \item{longitude}{Longitude of storm center, in decimal degrees (note:
 #'                    longitudes are given as negative values for
@@ -71,45 +68,50 @@
 #'
 #' A dataframe that gives the distance and date-time for the closest
 #' approach of each tropical storm to the mean population center of each
-#' US county in states in the eastern half of the United States.
+#' US county in states in the eastern half of the United States. This data includes
+#' all Atlantic-basin storms between 1988 and 2015 that came within at least 250 km
+#' of at least one US county.
 #'
 #' @details The minimum distance was calculated using the Great Circle method,
-#' using the \code{spDist} function from the \code{sp} package.
+#' using the \code{\link{spDist}} function from the \code{\link{sp}} package.
+#' The time of the closest approach of the storm to each county was converted from UTC
+#' to local time using the \code{\link{countytimezones}} package for the \code{local_time}
+#' and \code{closest_date} columns.
 #'
-#' @format A dataframe with 876,936 rows and 4 variables:
+#' @format A dataframe with 325,856 rows and 4 variables:
 #' \describe{
-#'   \item{storm_id}{Unique storm identifier with the storm name and year,
-#'                  separated by a hyphen(e.g., "Alberto-1988",
-#'                  "Katrina-2005")}
-#'   \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
-#'              code}
-#'   \item{closest_date}{Date (based on local time) of the closest
-#'                          approach of the storm to the county's population
-#'                          mean center.}
-#'   \item{storm_dist}{Minimum distance (in kilometers) between the storm's
+#'   \item{storm_id}{Character string with unique storm identifier with the storm name
+#'                   and year, separated by a hyphen (e.g., "Alberto-1988",
+#'                   "Katrina-2005")}
+#'   \item{fips}{Character string with the county's 5-digit Federal Information
+#'               Processing Standard (FIPS) code}
+#'  \item{closest_time_utc}{Character string of time, in UTC, of the closest approach of
+#'                          the storm to the county's population mean center, based on
+#'                          storm tracks linearly interpolated to 15-minute increments.}
+#'   \item{storm_dist}{Numeric of the minimum distance (in kilometers) between the storm's
 #'                     track and the county's population mean center.}
-#'   \item{local_time}{Local time of the closest approach of the storm to the
-#'                        county's population mean center, based on storm tracks
-#'                        linearly interpolated to 15-minute increments.}
-#'  \item{closest_time_utc}{Time, in UTC, of the closest approach of the
-#'                             storm to the county's population mean center,
-#'                             based on storm tracks linearly interpolated to
-#'                             15-minute increments.}
+#'   \item{local_time}{Character string of local time of the closest approach of the storm to the
+#'                     county's population mean center, based on storm tracks linearly
+#'                     interpolated to 15-minute increments.}
+#'   \item{closest_date}{Character string with date (based on local time) of the closest
+#'                       approach of the storm to the county's population mean center.}
 #' }
 "closest_dist"
 
-#' Rainfall for a week-long window for tropical storms
+#' Rainfall for US counties during Atlantic basin tropical storms
 #'
-#' A dataframe that gives the total rainfall in US counties for a one-week
-#' window centered at the date on which the tropical storm was closest
-#' to the county for Atlantic basin storms between 1988 and 2011.
+#' A dataframe that gives daily rainfall in US counties from five days before to
+#' three days after a tropical storm's closest approach to the county. This dataset
+#' covers all Atlantic-basin tropical storms between 1988 and 2011 for storms that came
+#' within 250 km of at least one US county. Only counties in the eastern half of the US
+#' are included.
 #'
-#' @format A dataframe with 5,417,356 rows and 5 variables:
+#' @format A dataframe with 2,673,936 rows and 5 variables:
 #' \describe{
-#'   \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
-#'              code}
-#'   \item{storm_id}{Unique storm identifier with the storm name and year,
-#'                  separated by a hyphen(e.g., "Alberto-1988",
+#'   \item{fips}{A character string with the county's 5-digit Federal Information
+#'               Processing Standard (FIPS) code}
+#'   \item{storm_id}{A character string with a unique storm identifier with the storm
+#'                  name and year, separated by a hyphen (e.g., "Alberto-1988",
 #'                  "Katrina-2005")}
 #'   \item{lag}{Number of days from date when storm was closest to the county
 #'              (e.g., \code{0} indicates the date the storm was closest to the
@@ -117,7 +119,7 @@
 #'              storm was closest to the county)}
 #'   \item{precip}{Average daily precipitation, in millimeters, for NLDAS grid
 #'    points with the county for the given lag day}
-#'   \item{precip_max}{Maximum daily precipitation, in millimeters, for NLDAS grid
+#'   \item{precip_max}{Maximum daily precipitation, in millimeters, across the NLDAS grid
 #'    points with the county for the given lag day}
 #' }
 #'
@@ -142,6 +144,11 @@
 #'    are available for download through the Center for Disease Control's
 #'    Wide-ranging Online Data for Epidemiological Research (WONDER) system
 #'    (see references).
+#'
+#' @author
+#'    Bill Crosson \email{bill.crosson@nasa.gov},
+#'    Mohammad Alhamdan \email{mohammad.alhamdan@nasa.gov}, and
+#'    Brooke Anderson \email{brooke.anderson@colostate.edu}
 #'
 #' @references
 #'
@@ -184,26 +191,54 @@
 #' }
 #'
 #' @note These wind speeds were modeled from hurricane best tracks
-#'    data using the \code{stormwindmodel} package to implement the
-#'    Willoughby wind model.
+#'    data using the \code{\link{stormwindmodel}} package to implement the
+#'    Willoughby wind model. See the "Details" vignette from that package
+#'    (available at \url{https://cran.r-project.org/web/packages/stormwindmodel/vignettes/Details.html})
+#'    for extensive details on this modeling process.
+#'
+#' @author
+#' Brooke Anderson \email{brooke.anderson@colostate.edu},
+#' Andrea Schumacher \email{andrea.schumacher@colostate.edu},
+#' Joshua Ferreri \email{joshua.m.ferreri@gmail.com},
+#' Seth Guikema \email{sguikema@umich.edu}, and
+#' Steven Quiring \email{quiring.10@osu.edu}
 "storm_winds"
 
 #' County storm event listings associated with tropical storms
 #'
 #' A list with any county-level storm event listings from NOAA Storm
 #' Events that were near an Atlantic basin tropical storm in location and time.
-#' Events that were reported at the forecast zone were, if possible, linked
-#' with the appropriate county.
+#' Only storms that came within 250 km of at least one US county were included.
 #'
 #' @format A list with 137 elements. Each element is named after a specific
 #'    tropical storm and is a dataframe with 2 variables:
 #' \describe{
 #'   \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
 #'              code}
-#'   \item{events}{List of extreme events for a specific county and storm.}
+#'   \item{events}{List of extreme events listings for a specific county and storm.
+#'         Each event is given by event type (e.g., "Tornado", "Flood", "Flash Flood").
+#'         See documentation in the website referenced below for the NOAA Storm Events
+#'         database for more information.}
 #' }
 #'
-#' @note Listings are generated using the \code{noaastormevents} package.
+#' @note Listings were generated using the \code{noaastormevents} package. An event
+#'    listed in the NOAA Storm Events database was matched to a tropical storm if
+#'    its beginning date was within a five-day window of the date the tropical storm
+#'    passed closest to the county and if the storm came within 500 km of the county.
+#'    See the documentation for the \code{noaastormevents} package (currently
+#'    available through GitHub) for more details on this process. All events that were
+#'    listed by county were captured for a storm; events that were reported at the
+#'    forecast zone were also included if it was possible to link the event to its
+#'    appropriate county. If no events in the NOAA Storm Events database were associated
+#'    with a tropical storm, that storm is not included in this dataset.
+#'
+#' @author
+#' Brooke Anderson \email{brooke.anderson@colostate.edu} and
+#' Ziyu Chen \email{zailchen17@icloud.com}
+#'
+#' @source
+#' Event listings were obtained from the NOAA Storm Events Database, available at:
+#' https://www.ncdc.noaa.gov/stormevents/
 "storm_events"
 
 #' Extended best tracks county wind speeds for historical storms
@@ -211,7 +246,7 @@
 #' A dataframe with storm winds based on extended best tracks hurricane
 #' data for historical Atlantic basin storms.
 #'
-#' @format A dataframe with 162,928 rows and 6 variables:
+#' @format A dataframe with 162,928 rows and 5 variables:
 #' \describe{
 #'   \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
 #'              code}
@@ -219,12 +254,43 @@
 #'              the storm.}
 #'   \item{vmax_sust}{Maximum modeled sustained wind speed in the county during
 #'              the storm.}
-#'   \item{gust_dur}{Time gust wind was above 20 m / s in the county during
-#'              the storm.}
-#'   \item{sust_dur}{Time sustained wind was above 20 m / s in the county during
+#'   \item{sust_dur}{Minutes sustained wind was above 34 knots in the county during
 #'              the storm.}
 #'   \item{storm_id}{Unique storm identifier with the storm name and year,
 #'              separated by a hyphen(e.g., "Alberto-1988",
 #'              "Katrina-2005")}
 #' }
+#'
+#' @details To calculate the wind values in this dataset, we used the wind radii from
+#'    the Extended Best Tracks dataset for Atlantic-basin tropical storms (see the
+#'    reference and source). These wind radii provide the radius in each of four quadrants
+#'    (northeast, southeast, southwest, and northwest) from the storm's center for each
+#'    of the 6-hour storm observations. We interpolated this data to every 15 minutes
+#'    and scaled each radius to 0.85 of its full value (the original radius gives the
+#'    maximum extent of 64-knot, 50-knot, and 34-knot winds in each quadrant). For each
+#'    15-minute point along the storm's track, we determined which counties fell within
+#'    each wind radius. We then determined, for each county, the maximum wind value
+#'    over the course of the storm. These wind values are limited to 34 knots, 50 knots,
+#'    and 64 knots; if a county is reported as having 64-knot winds in this dataset, it
+#'    therefore means that the county fell within 0.85 times the 64-knot maximum wind
+#'    radius at least once during the storm, and so can be interpreted as the county
+#'    likely experiencing at least 64-knot winds during the course of the storm.
+#'
+#'    Gust wind speed was calculated using a gust factor of 1.49 applied to the estimated
+#'    sustained wind speed (see the "Details" vignette of the \code{\link{stormwindmodel}}
+#'    package for more details on the choice of this gust factor). Durations were based
+#'    on the number of minutes winds were above 34 knots in the county over the course of
+#'    the storm.
+#'
+#' @author
+#'    Andrea Schumacher \email{andrea.schumacher@colostate.edu}
+#'
+#' @source
+#' Extended best tracks data were obtained from:
+#' \url{http://rammb.cira.colostate.edu/research/tropical_cyclones/tc_extended_best_track_dataset/}
+#'
+#' @references
+#' Demuth J, DeMaria M, Knaff JA, 2006. Improvement of advanced microwave sounder
+#' unit tropical cyclone intensity and size estimation algorithms. Journal of Applied
+#' Meteorology 45:1573-1581.
 "ext_tracks_wind"
