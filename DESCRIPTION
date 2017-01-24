@@ -11,7 +11,7 @@ Authors@R: c(person("Brooke", "Anderson",
     email = "meilin.yan@colostate.edu", role = "ctb"),
     person("Joshua", "Ferreri",
     email = "joshua.m.ferreri@gmail.com", role = "ctb"),
-    person("Bill", "Crosson", 
+    person("William", "Crosson", 
     email = "bill.crosson@nasa.gov", role = "aut"),
     person("Mohammad", "Al-Hamdan", 
     email = "mohammad.alhamdan@nasa.gov", role = "aut"),
@@ -29,7 +29,8 @@ Description: Includes data on distance-, rain-, and event-based exposure to
     in conjunction with the 'hurricaneexposure' package to explore, map, and
     characterize exposure to tropical storms at the county level. This work was
     supported in part by grants from the National Institute of Environmental
-    Health Sciences (R00ES022631) and the National Science Foundation (1331399).
+    Health Sciences (R00ES022631), the National Science Foundation (1331399),
+    and a NASA Applied Sciences Program/Public Health Program Grant (NNX09AV81G).
 URL: https://github.com/geanders/hurricaneexposuredata
 BugReports: https://github.com/geanders/hurricaneexposuredata/issues
 License: GPL-2
