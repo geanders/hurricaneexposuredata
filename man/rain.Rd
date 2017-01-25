@@ -40,8 +40,8 @@ This dataset was aggregated from hourly, 1/8 degree gridded data
    United States. To aggregate to a daily county-level value, we averaged
    the data at each grid point to generate a daily averaged and then
    averaged this value across all grid points within a county's boundaries.
-   We used county boundaries based on [boundaries at the time of the 2010
-   US Census ?]. The date-time for each observation at each grid point was
+   We used county boundaries based on boundaries at the time of the 1990
+   US Census. The date-time for each observation at each grid point was
    converted to local time (not considering Daylight Savings Time) before
    daily averages were generated for the grid point.
 }
@@ -55,8 +55,8 @@ This data set is based on data acquired as part of the mission of
    (see references).
 }
 \author{
-Bill Crosson \email{bill.crosson@nasa.gov},
-   Mohammad Alhamdan \email{mohammad.alhamdan@nasa.gov}, and
+William Crosson \email{bill.crosson@nasa.gov},
+   Mohammad Al-Hamdan \email{mohammad.alhamdan@nasa.gov}, and
    Brooke Anderson \email{brooke.anderson@colostate.edu}
 }
 \references{
