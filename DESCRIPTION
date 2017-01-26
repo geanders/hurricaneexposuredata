@@ -7,22 +7,20 @@ Authors@R: c(person("Brooke", "Anderson",
     email = "brooke.anderson@colostate.edu", role = c("aut", "cre")),
     person("Andrea", "Schumacher",
     email = "andrea.schumacher@colostate.edu", role = c("aut")),
-    person("Meilin", "Yan",
-    email = "meilin.yan@colostate.edu", role = "ctb"),
-    person("Joshua", "Ferreri",
-    email = "joshua.m.ferreri@gmail.com", role = "ctb"),
     person("William", "Crosson", 
     email = "bill.crosson@nasa.gov", role = "aut"),
     person("Mohammad", "Al-Hamdan", 
     email = "mohammad.alhamdan@nasa.gov", role = "aut"),
-    person("Andrea", "Schumacher", 
-    email = "andrea.schumacher@colostate.edu", role = "aut"),
-    person("Seth", "Guikema",
-    email = "sguikema@umich.edu", role = c("ctb")),
+    person("Meilin", "Yan",
+    email = "meilin.yan@colostate.edu", role = "ctb"),
+    person("Joshua", "Ferreri",
+    email = "joshua.m.ferreri@gmail.com", role = "ctb"),
+    person("Ziyu", "Chen",
+    email = "zailchen17@icloud.com", role = "ctb"),
     person("Steven", "Quiring",
     email = "quiring.10@osu.edu", role = c("ctb")),
-    person("Ziyu", "Chen",
-    email = "zailchen17@icloud.com", role = "ctb")
+    person("Seth", "Guikema",
+    email = "sguikema@umich.edu", role = c("ctb"))
     )
 Description: Includes data on distance-, rain-, and event-based exposure to 
     Atlantic-basin tropical storms in United States counties. This package can be used 
@@ -30,7 +28,8 @@ Description: Includes data on distance-, rain-, and event-based exposure to
     characterize exposure to tropical storms at the county level. This work was
     supported in part by grants from the National Institute of Environmental
     Health Sciences (R00ES022631), the National Science Foundation (1331399),
-    and a NASA Applied Sciences Program/Public Health Program Grant (NNX09AV81G).
+    the Department of Energy (DE-FG02-08ER64644), and a NASA Applied Sciences 
+    Program/Public Health Program Grant (NNX09AV81G).
 URL: https://github.com/geanders/hurricaneexposuredata
 BugReports: https://github.com/geanders/hurricaneexposuredata/issues
 License: GPL-2
