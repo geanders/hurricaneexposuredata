@@ -32,7 +32,7 @@ Description: Includes data on distance-, rain-, and event-based exposure to
     Program/Public Health Program Grant (NNX09AV81G).
 URL: https://github.com/geanders/hurricaneexposuredata
 BugReports: https://github.com/geanders/hurricaneexposuredata/issues
-License: GPL-2
+License: GPL (>=2)
 LazyData: TRUE
 RoxygenNote: 5.0.1
 Depends:
