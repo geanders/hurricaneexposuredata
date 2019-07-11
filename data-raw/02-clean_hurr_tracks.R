@@ -43,5 +43,5 @@ hurr_tracks <- select(hurr_tracks, -storm_id) %>%
 hurr_tracks <- tidyr::unite_(hurr_tracks, "date",
                       c("year", "month", "day", "hour", "minute"),
                       sep = "")
-use_data(hurr_tracks, overwrite = TRUE)
+usethis::use_data(hurr_tracks, overwrite = TRUE)
 

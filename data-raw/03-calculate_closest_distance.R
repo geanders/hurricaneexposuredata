@@ -77,9 +77,9 @@ us_storms <- closest_dist %>%
 hurr_tracks <- hurr_tracks %>%
   dplyr::filter(storm_id %in% us_storms$storm_id)
 
-use_data(hurr_tracks, overwrite = TRUE)
+usethis::use_data(hurr_tracks, overwrite = TRUE)
 
 closest_dist <- closest_dist %>%
   dplyr::filter(storm_id %in% us_storms$storm_id)
 
-use_data(closest_dist, overwrite = TRUE)
+usethis::use_data(closest_dist, overwrite = TRUE)

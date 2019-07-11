@@ -25,4 +25,4 @@ for(i in 1:length(storm_winds)){
 }
 
 storm_winds <- do.call("rbind", storm_winds)
-devtools::use_data(storm_winds, overwrite = TRUE)
+usethis::use_data(storm_winds, overwrite = TRUE)

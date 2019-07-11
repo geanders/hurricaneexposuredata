@@ -50,4 +50,4 @@ rain <- data.table::fread("data-raw/nasa_precip_export_2.txt",
                lag = gsub("a", "", lag),
                lag = as.numeric(lag))
 rain[rain$fips == 12025, "fips"] <- 12086
-use_data(rain, overwrite = TRUE)
+usethis::use_data(rain, overwrite = TRUE)

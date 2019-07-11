@@ -6,7 +6,7 @@ library(readr)
 # Make a table matching storm ID from extended tracks (e.g., "AL0188") to
 # our storm IDs (e.g., "Alberto-1988")
 # Bring in latest version of extended hurricane tracks
-hurr_id_table <- read.fwf("http://rammb.cira.colostate.edu/research/tropical_cyclones/tc_extended_best_track_dataset/data/ebtrk_atlc_1988_2015.txt",
+hurr_id_table <- read.fwf("http://rammb.cira.colostate.edu/research/tropical_cyclones/tc_extended_best_track_dataset/data/ebtrk_atlc_1988_2017.txt",
                         widths = c(7, 10, 2, 2, 3, 5, 5, 6, 4, 5,
                                    4, 4, 5, 3, 4, 3, 3, 3,
                                    4, 3, 3, 3, 4, 3, 3, 3, 2, 6, 1),

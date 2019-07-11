@@ -14,4 +14,4 @@ county_centers <- read.csv(paste0("http://www2.census.gov/geo/docs/reference/",
                state_name = STNAME,
                population = POPULATION,
                latitude = LATITUDE, longitude = LONGITUDE)
-use_data(county_centers, overwrite = TRUE)
+usethis::use_data(county_centers, overwrite = TRUE)
