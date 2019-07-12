@@ -40,4 +40,3 @@ to local time using the \code{countytimezones} package for the \code{local_time}
 and \code{closest_date} columns.
 }
 \keyword{datasets}
-

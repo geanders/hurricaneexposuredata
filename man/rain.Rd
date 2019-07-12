@@ -54,11 +54,6 @@ This data set is based on data acquired as part of the mission of
    Wide-ranging Online Data for Epidemiological Research (WONDER) system
    (see references).
 }
-\author{
-William Crosson \email{bill.crosson@nasa.gov},
-   Mohammad Al-Hamdan \email{mohammad.alhamdan@nasa.gov}, and
-   Brooke Anderson \email{brooke.anderson@colostate.edu}
-}
 \references{
 Al-Hamdan MZ, Crosson WL, Economou SA, Estes MG, Estes SM, Hemmings SN,
 Kent ST, Puckette M, Quattrochi DA, Rickman DL, Wade GM, McClure LA, 2014.
@@ -73,5 +68,9 @@ Rui H, Mocko D, 2014. README Document for North America Land Data
 Assimilation System Phase 2 (NLDAS-2) Products. Goddard Earth Sciences
 Data and Information Services Center.
 }
+\author{
+William Crosson \email{bill.crosson@nasa.gov},
+   Mohammad Al-Hamdan \email{mohammad.alhamdan@nasa.gov}, and
+   Brooke Anderson \email{brooke.anderson@colostate.edu}
+}
 \keyword{datasets}
-

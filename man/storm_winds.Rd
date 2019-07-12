@@ -44,4 +44,3 @@ Seth Guikema \email{sguikema@umich.edu}, and
 Steven Quiring \email{quiring.10@osu.edu}
 }
 \keyword{datasets}
-

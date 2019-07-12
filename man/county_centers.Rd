@@ -40,4 +40,3 @@ States 1950-2010, U.S. Department of Commerce, Bureau of the Census,
   Washington, DC, issued 2011. \url{http://www2.census.gov/geo/pdfs/reference/cenpop2010/COP2010_documentation.pdf}
 }
 \keyword{datasets}
-

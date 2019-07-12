@@ -51,13 +51,12 @@ To calculate the wind values in this dataset, we used the wind radii from
    on the number of minutes winds were above 34 knots in the county over the course of
    the storm.
 }
-\author{
-Andrea Schumacher \email{andrea.schumacher@colostate.edu}
-}
 \references{
 Demuth J, DeMaria M, Knaff JA, 2006. Improvement of advanced microwave sounder
 unit tropical cyclone intensity and size estimation algorithms. Journal of Applied
 Meteorology 45:1573-1581.
 }
+\author{
+Andrea Schumacher \email{andrea.schumacher@colostate.edu}
+}
 \keyword{datasets}
-
