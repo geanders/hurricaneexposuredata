@@ -17,6 +17,8 @@ for(storm_year in unique(storm_years)){
     print(storm)
     i <- which(storms == storm)
     this_storm_events <- find_events(storm = storm, dist_limit = 500) %>%
+      dplyr::rename(type = event_type) %>%
+      dplyr::mutate(fips = stringr::str_pad(fips, width = 5, side = "left", pad = "0")) %>%
       dplyr::select(fips, type) %>%
       dplyr::group_by(fips) %>%
       dplyr::summarize(events = list(type))
@@ -26,4 +28,4 @@ for(storm_year in unique(storm_years)){
   rm(noaastormevents_package_env)
 }
 
-devtools::use_data(storm_events, overwrite = TRUE)
+usethis::use_data(storm_events, overwrite = TRUE)
