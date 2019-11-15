@@ -34,12 +34,12 @@
 #' Storm tracks for Atlantic basin storms
 #'
 #' A dataset containing the storm tracks for Atlantic basin tropical
-#' storms between 1988 and 2015, from the International Best Track Archive
+#' storms between 1988 and 2018, from the International Best Track Archive
 #' for Climate Stewardship (IBTrACS) for the Atlantic basin. Only storms that
 #' came within 250 km of at least
 #' one US county are included.
 #'
-#' @format A data frame with 4,351 rows and 5 variables:
+#' @format A data frame with 10,549 rows and 5 variables:
 #' \describe{
 #'   \item{storm_id}{Unique storm identifier with the storm name and year,
 #'                  separated by a hyphen(e.g., "Alberto-1988",
@@ -66,12 +66,47 @@
 #'
 "hurr_tracks"
 
+#' Excluded storm tracks for Atlantic basin storms
+#'
+#' A dataset containing the storm tracks for Atlantic basin tropical
+#' storms between 1988 and 2018, from the International Best Track Archive
+#' for Climate Stewardship (IBTrACS) for the Atlantic basin. Only storms that
+#' were excluded from the main 'hurr_tracks' dataset, because they did not
+#' come within 250 km of at least one US county, are included.
+#'
+#' @format A data frame with 17,918 rows and 5 variables:
+#' \describe{
+#'   \item{storm_id}{Unique storm identifier with the storm name and year,
+#'                  separated by a hyphen(e.g., "Alberto-1988",
+#'                  "Katrina-2005")}
+#'   \item{date}{Character string with date and time of storm track recording, in
+#'               the Universal Time Coordinated (UTC) time zone. This date is formated
+#'               as \code{\%Y\%m\%d\%H\%M}.}
+#'   \item{latitude}{Latitude of storm center, in decimal degrees}
+#'   \item{longitude}{Longitude of storm center, in decimal degrees (note:
+#'                    longitudes are given as negative values for
+#'                    longitudes west of the prime meridian)}
+#'   \item{wind}{1-minute maximum sustained surface wind speed, measured at
+#'              10 meters above the ground, in knots (values are rounded to
+#'              the nearest 5-knot value)}
+#' }
+#'
+#' @source \url{https://www.ncdc.noaa.gov/ibtracs/index.php?name=ib-v4-access}
+#'
+#' @references
+#'
+#' Knapp KR, Kruk MC, Levinson DH, Diamond HJ, and Neumann CJ, 2010. The
+#' International Best Track Archive for Climate Stewardship (IBTrACS).
+#' Bulletin of the American Meteorological Society 91 (3), 363--376.
+#'
+"excluded_tracks"
+
 #' Closest distances between counties and a storm track
 #'
 #' A dataframe that gives the distance and date-time for the closest
 #' approach of each tropical storm to the mean population center of each
 #' US county in states in the eastern half of the United States. This data includes
-#' all Atlantic-basin storms between 1988 and 2015 that came within at least 250 km
+#' all Atlantic-basin storms between 1988 and 2018 that came within at least 250 km
 #' of at least one US county.
 #'
 #' @details The minimum distance was calculated using the Great Circle method,
@@ -80,7 +115,7 @@
 #' to local time using the \code{countytimezones} package for the \code{local_time}
 #' and \code{closest_date} columns.
 #'
-#' @format A dataframe with 325,856 rows and 4 variables:
+#' @format A dataframe with 412,112 rows and 6 variables:
 #' \describe{
 #'   \item{storm_id}{Character string with unique storm identifier with the storm name
 #'                   and year, separated by a hyphen (e.g., "Alberto-1988",
