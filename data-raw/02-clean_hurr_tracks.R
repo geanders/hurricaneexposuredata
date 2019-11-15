@@ -19,10 +19,10 @@ hurr_tracks <- read_csv(paste0("https://www.ncei.noaa.gov/data/",
         rename_all(str_to_lower) %>%
         select(usa_atcf_id, season, name, iso_time,
                lat, lon, usa_wind) %>%
-        mutate(usa_atcf_id = str_sub(usa_atcf_id, 1, 4),
+        mutate(usa_atcf_id = str_sub(usa_atcf_id, 1, 4), # Take the year out of the ATCF ID
                name = str_to_title(name),
-               name = ifelse(name == "Not_named", usa_atcf_id, name)) %>%
-        unite(storm_id, c("name", "season"), sep = "-") %>%
+               name = ifelse(name == "Not_named", usa_atcf_id, name)) %>% # For Unnamed storms, used the ATCF ID without the year
+        unite(storm_id, c("name", "season"), sep = "-") %>% # Use name plus season as the storm ID
         mutate(date = format(iso_time, "%Y%m%d%H%M")) %>%
         select(storm_id, date, lat, lon, usa_wind) %>%
         rename(latitude = lat,
