@@ -74,9 +74,12 @@ us_storms <- closest_dist %>%
   dplyr::group_by(storm_id) %>%
   dplyr::summarize(closest_county = min(storm_dist)) %>%
   dplyr::filter(closest_county <= 250)
+excluded_tracks <- hurr_tracks %>%
+  dplyr::filter(!(storm_id %in% us_storms$storm_id))
 hurr_tracks <- hurr_tracks %>%
   dplyr::filter(storm_id %in% us_storms$storm_id)
 
+usethis::use_data(excluded_tracks, overwrite = TRUE)
 usethis::use_data(hurr_tracks, overwrite = TRUE)
 
 closest_dist <- closest_dist %>%
