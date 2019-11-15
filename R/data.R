@@ -34,8 +34,9 @@
 #' Storm tracks for Atlantic basin storms
 #'
 #' A dataset containing the storm tracks for Atlantic basin tropical
-#' storms between 1988 and 2015, from the Extended Best Track Dataset for
-#' the Atlantic basin. Only storms that came within 250 km of at least
+#' storms between 1988 and 2015, from the International Best Track Archive
+#' for Climate Stewardship (IBTrACS) for the Atlantic basin. Only storms that
+#' came within 250 km of at least
 #' one US county are included.
 #'
 #' @format A data frame with 4,351 rows and 5 variables:
@@ -55,12 +56,13 @@
 #'              the nearest 5-knot value)}
 #' }
 #'
-#' @source \url{http://rammb.cira.colostate.edu/research/tropical_cyclones/tc_extended_best_track_dataset}
+#' @source \url{https://www.ncdc.noaa.gov/ibtracs/index.php?name=ib-v4-access}
 #'
 #' @references
-#' Demuth J, DeMaria M, Knaff JA, 2006. Improvement of advanced microwave
-#' sounder unit tropical cyclone intensity and size estimation algorithms.
-#' Journal of Applied Meteorology and Climatology 45:1573-1581
+#'
+#' Knapp KR, Kruk MC, Levinson DH, Diamond HJ, and Neumann CJ, 2010. The
+#' International Best Track Archive for Climate Stewardship (IBTrACS).
+#' Bulletin of the American Meteorological Society 91 (3), 363--376.
 #'
 "hurr_tracks"
 
