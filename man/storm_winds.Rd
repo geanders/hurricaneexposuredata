@@ -17,8 +17,11 @@
   \item{sust_dur}{Time sustained wind was above 20 m / s in the county during
              the storm.}
   \item{storm_id}{Unique storm identifier with the storm name and year,
-             separated by a hyphen(e.g., "Alberto-1988",
-             "Katrina-2005")}
+             separated by a hyphen (e.g., "Alberto-1988",
+             "Katrina-2005"). For unnamed storms, the identifier uses the
+             first four digits of the storm's Automated Tropical Cyclone
+             Forecasting System ID and year, separated by a hyphen (e.g.,
+             "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
 }}
 \usage{
 storm_winds

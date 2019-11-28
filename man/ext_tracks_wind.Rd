@@ -15,12 +15,12 @@
   \item{sust_dur}{Minutes sustained wind was above 34 knots in the county during
              the storm.}
   \item{storm_id}{Unique storm identifier with the storm name and year,
-             separated by a hyphen(e.g., "Alberto-1988",
-             "Katrina-2005")}
+             separated by a hyphen (e.g., "Alberto-1988",
+             "Katrina-2005").}
 }}
 \source{
-Extended best tracks data were obtained from:
-\url{http://rammb.cira.colostate.edu/research/tropical_cyclones/tc_extended_best_track_dataset/}
+HURDAT2 data were obtained from:
+\url{https://www.nhc.noaa.gov/data/}
 }
 \usage{
 ext_tracks_wind
@@ -31,10 +31,11 @@ data for historical Atlantic basin storms.
 }
 \details{
 To calculate the wind values in this dataset, we used the wind radii from
-   the Extended Best Tracks dataset for Atlantic-basin tropical storms (see the
+   the HURDAT2 dataset for Atlantic-basin tropical storms (see the
    reference and source). These wind radii provide the radius in each of four quadrants
    (northeast, southeast, southwest, and northwest) from the storm's center for each
    of the 6-hour storm observations. We interpolated this data to every 15 minutes
+   using linear interpolation (Section 3.3. of Press et al. (1992))
    and scaled each radius to 0.85 of its full value (the original radius gives the
    maximum extent of 64-knot, 50-knot, and 34-knot winds in each quadrant). For each
    15-minute point along the storm's track, we determined which counties fell within
@@ -52,9 +53,14 @@ To calculate the wind values in this dataset, we used the wind radii from
    the storm.
 }
 \references{
-Demuth J, DeMaria M, Knaff JA, 2006. Improvement of advanced microwave sounder
-unit tropical cyclone intensity and size estimation algorithms. Journal of Applied
-Meteorology 45:1573-1581.
+Landsea CW, Franklin JL, Beven JL. May 2015. The revised Atlantic
+hurricane database (HURDAT2). United States National Oceanic and Atmospheric Administration's
+National Weather Service.
+\url{https://www.nhc.noaa.gov/data/hurdat/hurdat2-format-atlantic.pdf}
+Retrieved November 28, 2019.
+
+Press WH, Teukolsky SA, Vetterling WT, Flannery BP. 1992. Numerical Recipes in Fortran 77:
+The Art of Scientific Computing. Cambridge University Press.
 }
 \author{
 Andrea Schumacher \email{andrea.schumacher@colostate.edu}

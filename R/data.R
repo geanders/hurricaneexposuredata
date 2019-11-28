@@ -42,8 +42,11 @@
 #' @format A data frame with 10,549 rows and 5 variables:
 #' \describe{
 #'   \item{storm_id}{Unique storm identifier with the storm name and year,
-#'                  separated by a hyphen(e.g., "Alberto-1988",
-#'                  "Katrina-2005")}
+#'                  separated by a hyphen (e.g., "Alberto-1988",
+#'                  "Katrina-2005"). For unnamed storms, the identifier uses the
+#'                  first four digits of the storm's Automated Tropical Cyclone
+#'                  Forecasting System ID and year, separated by a hyphen (e.g.,
+#'                  "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
 #'   \item{date}{Character string with date and time of storm track recording, in
 #'               the Universal Time Coordinated (UTC) time zone. This date is formated
 #'               as \code{\%Y\%m\%d\%H\%M}.}
@@ -78,7 +81,10 @@
 #' \describe{
 #'   \item{storm_id}{Unique storm identifier with the storm name and year,
 #'                  separated by a hyphen(e.g., "Alberto-1988",
-#'                  "Katrina-2005")}
+#'                  "Katrina-2005"). For unnamed storms, the identifier uses the
+#'                  first four digits of the storm's Automated Tropical Cyclone
+#'                  Forecasting System ID and year, separated by a hyphen (e.g.,
+#'                  "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
 #'   \item{date}{Character string with date and time of storm track recording, in
 #'               the Universal Time Coordinated (UTC) time zone. This date is formated
 #'               as \code{\%Y\%m\%d\%H\%M}.}
@@ -119,7 +125,10 @@
 #' \describe{
 #'   \item{storm_id}{Character string with unique storm identifier with the storm name
 #'                   and year, separated by a hyphen (e.g., "Alberto-1988",
-#'                   "Katrina-2005")}
+#'                   "Katrina-2005"). For unnamed storms, the identifier uses the
+#'                  first four digits of the storm's Automated Tropical Cyclone
+#'                  Forecasting System ID and year, separated by a hyphen (e.g.,
+#'                  "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
 #'   \item{fips}{Character string with the county's 5-digit Federal Information
 #'               Processing Standard (FIPS) code}
 #'  \item{closest_time_utc}{Character string of time, in UTC, of the closest approach of
@@ -149,7 +158,10 @@
 #'               Processing Standard (FIPS) code}
 #'   \item{storm_id}{A character string with a unique storm identifier with the storm
 #'                  name and year, separated by a hyphen (e.g., "Alberto-1988",
-#'                  "Katrina-2005")}
+#'                  "Katrina-2005"). For unnamed storms, the identifier uses the
+#'                  first four digits of the storm's Automated Tropical Cyclone
+#'                  Forecasting System ID and year, separated by a hyphen (e.g.,
+#'                  "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
 #'   \item{lag}{Number of days from date when storm was closest to the county
 #'              (e.g., \code{0} indicates the date the storm was closest to the
 #'              county, \code{-2} indicates two days before the date when the
@@ -223,8 +235,11 @@
 #'   \item{sust_dur}{Time sustained wind was above 20 m / s in the county during
 #'              the storm.}
 #'   \item{storm_id}{Unique storm identifier with the storm name and year,
-#'              separated by a hyphen(e.g., "Alberto-1988",
-#'              "Katrina-2005")}
+#'              separated by a hyphen (e.g., "Alberto-1988",
+#'              "Katrina-2005"). For unnamed storms, the identifier uses the
+#'              first four digits of the storm's Automated Tropical Cyclone
+#'              Forecasting System ID and year, separated by a hyphen (e.g.,
+#'              "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
 #' }
 #'
 #' @note These wind speeds were modeled from hurricane best tracks
@@ -298,15 +313,16 @@
 #'   \item{sust_dur}{Minutes sustained wind was above 34 knots in the county during
 #'              the storm.}
 #'   \item{storm_id}{Unique storm identifier with the storm name and year,
-#'              separated by a hyphen(e.g., "Alberto-1988",
-#'              "Katrina-2005")}
+#'              separated by a hyphen (e.g., "Alberto-1988",
+#'              "Katrina-2005").}
 #' }
 #'
 #' @details To calculate the wind values in this dataset, we used the wind radii from
-#'    the Extended Best Tracks dataset for Atlantic-basin tropical storms (see the
+#'    the HURDAT2 dataset for Atlantic-basin tropical storms (see the
 #'    reference and source). These wind radii provide the radius in each of four quadrants
 #'    (northeast, southeast, southwest, and northwest) from the storm's center for each
 #'    of the 6-hour storm observations. We interpolated this data to every 15 minutes
+#'    using linear interpolation (Section 3.3. of Press et al. (1992))
 #'    and scaled each radius to 0.85 of its full value (the original radius gives the
 #'    maximum extent of 64-knot, 50-knot, and 34-knot winds in each quadrant). For each
 #'    15-minute point along the storm's track, we determined which counties fell within
@@ -327,11 +343,16 @@
 #'    Andrea Schumacher \email{andrea.schumacher@colostate.edu}
 #'
 #' @source
-#' Extended best tracks data were obtained from:
-#' \url{http://rammb.cira.colostate.edu/research/tropical_cyclones/tc_extended_best_track_dataset/}
+#' HURDAT2 data were obtained from:
+#' \url{https://www.nhc.noaa.gov/data/}
 #'
 #' @references
-#' Demuth J, DeMaria M, Knaff JA, 2006. Improvement of advanced microwave sounder
-#' unit tropical cyclone intensity and size estimation algorithms. Journal of Applied
-#' Meteorology 45:1573-1581.
+#' Landsea CW, Franklin JL, Beven JL. May 2015. The revised Atlantic
+#' hurricane database (HURDAT2). United States National Oceanic and Atmospheric Administration's
+#' National Weather Service.
+#' \url{https://www.nhc.noaa.gov/data/hurdat/hurdat2-format-atlantic.pdf}
+#' Retrieved November 28, 2019.
+#'
+#' Press WH, Teukolsky SA, Vetterling WT, Flannery BP. 1992. Numerical Recipes in Fortran 77:
+#' The Art of Scientific Computing. Cambridge University Press.
 "ext_tracks_wind"

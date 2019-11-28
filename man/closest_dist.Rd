@@ -4,11 +4,14 @@
 \name{closest_dist}
 \alias{closest_dist}
 \title{Closest distances between counties and a storm track}
-\format{A dataframe with 325,856 rows and 4 variables:
+\format{A dataframe with 412,112 rows and 6 variables:
 \describe{
   \item{storm_id}{Character string with unique storm identifier with the storm name
                   and year, separated by a hyphen (e.g., "Alberto-1988",
-                  "Katrina-2005")}
+                  "Katrina-2005"). For unnamed storms, the identifier uses the
+                 first four digits of the storm's Automated Tropical Cyclone
+                 Forecasting System ID and year, separated by a hyphen (e.g.,
+                 "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
   \item{fips}{Character string with the county's 5-digit Federal Information
               Processing Standard (FIPS) code}
  \item{closest_time_utc}{Character string of time, in UTC, of the closest approach of
@@ -29,7 +32,7 @@ closest_dist
 A dataframe that gives the distance and date-time for the closest
 approach of each tropical storm to the mean population center of each
 US county in states in the eastern half of the United States. This data includes
-all Atlantic-basin storms between 1988 and 2015 that came within at least 250 km
+all Atlantic-basin storms between 1988 and 2018 that came within at least 250 km
 of at least one US county.
 }
 \details{

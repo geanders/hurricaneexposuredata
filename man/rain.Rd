@@ -10,7 +10,10 @@
               Processing Standard (FIPS) code}
   \item{storm_id}{A character string with a unique storm identifier with the storm
                  name and year, separated by a hyphen (e.g., "Alberto-1988",
-                 "Katrina-2005")}
+                 "Katrina-2005"). For unnamed storms, the identifier uses the
+                 first four digits of the storm's Automated Tropical Cyclone
+                 Forecasting System ID and year, separated by a hyphen (e.g.,
+                 "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
   \item{lag}{Number of days from date when storm was closest to the county
              (e.g., \code{0} indicates the date the storm was closest to the
              county, \code{-2} indicates two days before the date when the
