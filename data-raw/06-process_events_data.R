@@ -5,7 +5,7 @@ library(dplyr)
 
 data(hurr_tracks, package = "hurricaneexposuredata")
 storms <- unique(hurr_tracks$storm_id)
-storm_years <- gsub(".+-", "", storms)
+storm_years <- gsub(".+-", "", storm_id_table$storm_id)
 
 storm_events <- vector("list", length(storms))
 names(storm_events) <- storms

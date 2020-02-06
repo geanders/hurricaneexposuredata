@@ -4,16 +4,18 @@
 \name{rain}
 \alias{rain}
 \title{Rainfall for US counties during Atlantic basin tropical storms}
-\format{A dataframe with 2,673,936 rows and 5 variables:
+\format{A dataframe with 2,673,936 rows and 6 variables:
 \describe{
   \item{fips}{A character string with the county's 5-digit Federal Information
               Processing Standard (FIPS) code}
-  \item{storm_id}{A character string with a unique storm identifier with the storm
-                 name and year, separated by a hyphen (e.g., "Alberto-1988",
-                 "Katrina-2005"). For unnamed storms, the identifier uses the
-                 first four digits of the storm's Automated Tropical Cyclone
-                 Forecasting System ID and year, separated by a hyphen (e.g.,
-                 "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
+  \item{storm_id}{Unique storm identifier with the storm name and year,
+                 separated by a hyphen (e.g., "Alberto-1988",
+                 "Katrina-2005"). Some storms are "Unnamed" or have other
+                 generic names. In these cases, it may be preferable to identify
+                 the storm using the ATCF ID (\code{usa_atcf_id}) rather than
+                 the storm ID.}
+  \item{usa_atcf_id}{Character string with the Automated Tropical Cyclone
+                 Forecasting System ID for the storm.}
   \item{lag}{Number of days from date when storm was closest to the county
              (e.g., \code{0} indicates the date the storm was closest to the
              county, \code{-2} indicates two days before the date when the

@@ -4,14 +4,16 @@
 \name{closest_dist}
 \alias{closest_dist}
 \title{Closest distances between counties and a storm track}
-\format{A dataframe with 412,112 rows and 6 variables:
+\format{A dataframe with 409,716 rows and 7 variables:
 \describe{
-  \item{storm_id}{Character string with unique storm identifier with the storm name
-                  and year, separated by a hyphen (e.g., "Alberto-1988",
-                  "Katrina-2005"). For unnamed storms, the identifier uses the
-                 first four digits of the storm's Automated Tropical Cyclone
-                 Forecasting System ID and year, separated by a hyphen (e.g.,
-                 "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
+  \item{storm_id}{Unique storm identifier with the storm name and year,
+                 separated by a hyphen (e.g., "Alberto-1988",
+                 "Katrina-2005"). Some storms are "Unnamed" or have other
+                 generic names. In these cases, it may be preferable to identify
+                 the storm using the ATCF ID (\code{usa_atcf_id}) rather than
+                 the storm ID.}
+  \item{usa_atcf_id}{Character string with the Automated Tropical Cyclone
+                 Forecasting System ID for the storm.}
   \item{fips}{Character string with the county's 5-digit Federal Information
               Processing Standard (FIPS) code}
  \item{closest_time_utc}{Character string of time, in UTC, of the closest approach of

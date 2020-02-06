@@ -9,12 +9,10 @@ library(readr)
 # Bring in latest version of HURDAT2
 hurdat2 <- read_lines("https://www.nhc.noaa.gov/data/hurdat/hurdat2-1851-2018-051019.txt")
 
-# Split into the rows with storm names (e.g., "AL011851") and those with storm data
+# Split to get the rows with storm names (e.g., "AL011851")
 hurdat2_names <- hurdat2[str_detect(hurdat2, "AL[0-9]{6}.")]
 
-unnamed_names <- c("Unnamed", "One", "Two", "Five", "Eight", "Nine", "Ten",
-                   "Sixteen", "Nineteen", "Twenty-Two", "Alpha", "Beta",
-                   "Gamma", "Delta", "Epsilon", "Zeta")
+unnamed_names <- c("Unnamed")
 
 # Clean up the storm names
 hurr_id_table <- hurdat2_names %>%
@@ -53,7 +51,8 @@ wr_tracks_wind <- lapply(wr_tracks_files, function(x){
   bind_rows() %>%
   inner_join(hurr_id_table, by = "old_id") %>%
   select(gridid, vmax_gust, vmax_sust, sust_duration, storm_id) %>%
-  rename(fips = gridid) %>%
+  rename(fips = gridid,
+         sust_dur = sust_duration) %>%
   mutate(fips = str_pad(fips, width = 5, side = "left", pad = "0"))
 
 # Rename to fit into existing package structure

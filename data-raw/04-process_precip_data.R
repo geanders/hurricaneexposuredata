@@ -20,9 +20,9 @@ check_dates <- dplyr::select(closest_dist, -storm_dist) %>%
                day_a1 = day_0 + days(1),
                day_a2 = day_0 + days(2),
                day_a3 = day_0 + days(3)) %>%
-        dplyr::select(storm_id, fips, day_b5, day_b4, day_b3, day_b2, day_b1,
+        dplyr::select(storm_id, usa_atcf_id, fips, day_b5, day_b4, day_b3, day_b2, day_b1,
                day_0, day_a1, day_a2, day_a3) %>%
-        tidyr::gather(key = lag, value = day, -storm_id, -fips) %>%
+        tidyr::pivot_longer(cols = day_b5:day_a3, names_to = "lag", values_to = "day") %>%
         dplyr::mutate(day = as.numeric(format(day, "%Y%m%d")))
 
 all_dates <- unique(check_dates$day)
@@ -42,8 +42,8 @@ rain <- data.table::fread("data-raw/nasa_precip_export_2.txt",
                    by = c("fips" = "fips", "day" = "day")) %>%
         dplyr::filter(!is.na(precip) & !is.na(precip_max)) %>%
         dplyr::select(-day) %>%
-        dplyr::arrange(storm_id, fips) %>%
-        dplyr::select(fips, storm_id, lag, precip, precip_max) %>%
+        dplyr::arrange(usa_atcf_id, fips) %>%
+        dplyr::select(fips, storm_id, usa_atcf_id, lag, precip, precip_max) %>%
         dplyr::mutate(fips = sprintf("%05d", fips),
                lag = gsub("day_", "", lag),
                lag = gsub("b", "-", lag),

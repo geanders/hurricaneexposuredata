@@ -34,19 +34,22 @@
 #' Storm tracks for Atlantic basin storms
 #'
 #' A dataset containing the storm tracks for Atlantic basin tropical
-#' storms between 1988 and 2018, from the International Best Track Archive
-#' for Climate Stewardship (IBTrACS) for the Atlantic basin. Only storms that
+#' storms between 1988 and 2018, from the US National Hurricane Center's
+#' Best Track Atlantic hurricane database (HURDAT2). Only storms that
 #' came within 250 km of at least
 #' one US county are included.
 #'
-#' @format A data frame with 10,549 rows and 5 variables:
+#' @format A data frame with 5,503 rows and 6 variables:
 #' \describe{
 #'   \item{storm_id}{Unique storm identifier with the storm name and year,
 #'                  separated by a hyphen (e.g., "Alberto-1988",
-#'                  "Katrina-2005"). For unnamed storms, the identifier uses the
-#'                  first four digits of the storm's Automated Tropical Cyclone
-#'                  Forecasting System ID and year, separated by a hyphen (e.g.,
-#'                  "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
+#'                  "Katrina-2005"). Some storms are "Unnamed" or have other
+#'                  generic names. In these cases, it may be preferable to identify
+#'                  the storm using the first four characters of their
+#'                  ATCF ID (\code{usa_atcf_id}) and the storm season rather than
+#'                  the storm ID (e.g., 'AL13-1988').}
+#'   \item{usa_atcf_id}{Character string with the Automated Tropical Cyclone
+#'                  Forecasting System ID for the storm.}
 #'   \item{date}{Character string with date and time of storm track recording, in
 #'               the Universal Time Coordinated (UTC) time zone. This date is formated
 #'               as \code{\%Y\%m\%d\%H\%M}.}
@@ -59,32 +62,34 @@
 #'              the nearest 5-knot value)}
 #' }
 #'
-#' @source \url{https://www.ncdc.noaa.gov/ibtracs/index.php?name=ib-v4-access}
+#' @source \url{https://www.nhc.noaa.gov/data/hurdat/hurdat2-1851-2018-120319.txt}
 #'
 #' @references
 #'
-#' Knapp KR, Kruk MC, Levinson DH, Diamond HJ, and Neumann CJ, 2010. The
-#' International Best Track Archive for Climate Stewardship (IBTrACS).
-#' Bulletin of the American Meteorological Society 91 (3), 363--376.
+#' Landsea, CW and JL Franklin, 2013. Atlantic Hurricane Database Uncertainty and
+#' Presentation of a New Database Format. Monthly Weather Revue, 141, 3576--3592.
 #'
 "hurr_tracks"
 
 #' Excluded storm tracks for Atlantic basin storms
 #'
 #' A dataset containing the storm tracks for Atlantic basin tropical
-#' storms between 1988 and 2018, from the International Best Track Archive
-#' for Climate Stewardship (IBTrACS) for the Atlantic basin. Only storms that
+#' storms between 1988 and 2018, from the US National Hurricane Center's
+#' Best Track Atlantic hurricane database (HURDAT2). Only storms that
 #' were excluded from the main 'hurr_tracks' dataset, because they did not
 #' come within 250 km of at least one US county, are included.
 #'
-#' @format A data frame with 17,918 rows and 5 variables:
+#' @format A data frame with 9,124 rows and 6 variables:
 #' \describe{
 #'   \item{storm_id}{Unique storm identifier with the storm name and year,
-#'                  separated by a hyphen(e.g., "Alberto-1988",
-#'                  "Katrina-2005"). For unnamed storms, the identifier uses the
-#'                  first four digits of the storm's Automated Tropical Cyclone
-#'                  Forecasting System ID and year, separated by a hyphen (e.g.,
-#'                  "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
+#'                  separated by a hyphen (e.g., "Alberto-1988",
+#'                  "Katrina-2005"). Some storms are "Unnamed" or have other
+#'                  generic names. In these cases, it may be preferable to identify
+#'                  the storm using the first four characters of their
+#'                  ATCF ID (\code{usa_atcf_id}) and the storm season rather than
+#'                  the storm ID (e.g., 'AL11-2018').}
+#'   \item{usa_atcf_id}{Character string with the Automated Tropical Cyclone
+#'                  Forecasting System ID for the storm.}
 #'   \item{date}{Character string with date and time of storm track recording, in
 #'               the Universal Time Coordinated (UTC) time zone. This date is formated
 #'               as \code{\%Y\%m\%d\%H\%M}.}
@@ -97,13 +102,12 @@
 #'              the nearest 5-knot value)}
 #' }
 #'
-#' @source \url{https://www.ncdc.noaa.gov/ibtracs/index.php?name=ib-v4-access}
+#' @source \url{https://www.nhc.noaa.gov/data/hurdat/hurdat2-1851-2018-120319.txt}
 #'
 #' @references
 #'
-#' Knapp KR, Kruk MC, Levinson DH, Diamond HJ, and Neumann CJ, 2010. The
-#' International Best Track Archive for Climate Stewardship (IBTrACS).
-#' Bulletin of the American Meteorological Society 91 (3), 363--376.
+#' Landsea, CW and JL Franklin, 2013. Atlantic Hurricane Database Uncertainty and
+#' Presentation of a New Database Format. Monthly Weather Revue, 141, 3576--3592.
 #'
 "excluded_tracks"
 
@@ -121,14 +125,17 @@
 #' to local time using the \code{countytimezones} package for the \code{local_time}
 #' and \code{closest_date} columns.
 #'
-#' @format A dataframe with 412,112 rows and 6 variables:
+#' @format A dataframe with 409,716 rows and 7 variables:
 #' \describe{
-#'   \item{storm_id}{Character string with unique storm identifier with the storm name
-#'                   and year, separated by a hyphen (e.g., "Alberto-1988",
-#'                   "Katrina-2005"). For unnamed storms, the identifier uses the
-#'                  first four digits of the storm's Automated Tropical Cyclone
-#'                  Forecasting System ID and year, separated by a hyphen (e.g.,
-#'                  "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
+#'   \item{storm_id}{Unique storm identifier with the storm name and year,
+#'                  separated by a hyphen (e.g., "Alberto-1988",
+#'                  "Katrina-2005"). Some storms are "Unnamed" or have other
+#'                  generic names. In these cases, it may be preferable to identify
+#'                  the storm using the first four characters of their
+#'                  ATCF ID (\code{usa_atcf_id}) and the storm season rather than
+#'                  the storm ID (e.g., 'AL13-1988').}
+#'   \item{usa_atcf_id}{Character string with the Automated Tropical Cyclone
+#'                  Forecasting System ID for the storm.}
 #'   \item{fips}{Character string with the county's 5-digit Federal Information
 #'               Processing Standard (FIPS) code}
 #'  \item{closest_time_utc}{Character string of time, in UTC, of the closest approach of
@@ -152,16 +159,19 @@
 #' within 250 km of at least one US county. Only counties in the eastern half of the US
 #' are included.
 #'
-#' @format A dataframe with 2,673,936 rows and 5 variables:
+#' @format A dataframe with 3,040,524 rows and 6 variables:
 #' \describe{
 #'   \item{fips}{A character string with the county's 5-digit Federal Information
 #'               Processing Standard (FIPS) code}
-#'   \item{storm_id}{A character string with a unique storm identifier with the storm
-#'                  name and year, separated by a hyphen (e.g., "Alberto-1988",
-#'                  "Katrina-2005"). For unnamed storms, the identifier uses the
-#'                  first four digits of the storm's Automated Tropical Cyclone
-#'                  Forecasting System ID and year, separated by a hyphen (e.g.,
-#'                  "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
+#'   \item{storm_id}{Unique storm identifier with the storm name and year,
+#'                  separated by a hyphen (e.g., "Alberto-1988",
+#'                  "Katrina-2005"). Some storms are "Unnamed" or have other
+#'                  generic names. In these cases, it may be preferable to identify
+#'                  the storm using the first four characters of their
+#'                  ATCF ID (\code{usa_atcf_id}) and the storm season rather than
+#'                  the storm ID (e.g., 'AL13-1988').}
+#'   \item{usa_atcf_id}{Character string with the Automated Tropical Cyclone
+#'                  Forecasting System ID for the storm.}
 #'   \item{lag}{Number of days from date when storm was closest to the county
 #'              (e.g., \code{0} indicates the date the storm was closest to the
 #'              county, \code{-2} indicates two days before the date when the
@@ -218,11 +228,11 @@
 #' Modeled county wind speeds for historical storms
 #'
 #' A dataframe with modeled winds for historical tropical storms in the
-#' Atlantic basin for U.S. counties from 1988 to 2015. For each county,
+#' Atlantic basin for U.S. counties from 1988 to 2018. For each county,
 #' the given wind speed is that modeled at the county's population mean
 #' center (based on the 2010 U.S. Census).
 #'
-#' @format A dataframe with 325,856 rows and 6 variables:
+#' @format A dataframe with 409,716 rows and 6 variables:
 #' \describe{
 #'   \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
 #'              code}
@@ -235,11 +245,13 @@
 #'   \item{sust_dur}{Time sustained wind was above 20 m / s in the county during
 #'              the storm.}
 #'   \item{storm_id}{Unique storm identifier with the storm name and year,
-#'              separated by a hyphen (e.g., "Alberto-1988",
-#'              "Katrina-2005"). For unnamed storms, the identifier uses the
-#'              first four digits of the storm's Automated Tropical Cyclone
-#'              Forecasting System ID and year, separated by a hyphen (e.g.,
-#'              "AL10-2007" for Tropical Depression Ten (unnamed storm) in 2007.)}
+#'                  separated by a hyphen (e.g., "Alberto-1988",
+#'                  "Katrina-2005"). Some storms are "Unnamed" or have other
+#'                  generic names. In these cases, it may be preferable to identify
+#'                  the storm using the ATCF ID (\code{usa_atcf_id}) rather than
+#'                  the storm ID.}
+#'   \item{usa_atcf_id}{Character string with the Automated Tropical Cyclone
+#'                  Forecasting System ID for the storm.}
 #' }
 #'
 #' @note These wind speeds were modeled from hurricane best tracks

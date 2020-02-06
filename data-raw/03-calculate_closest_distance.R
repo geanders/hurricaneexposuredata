@@ -9,16 +9,43 @@ library(hurricaneexposure)
 data(county_centers, package = "hurricaneexposuredata")
 data(hurr_tracks, package = "hurricaneexposuredata")
 
-# install_github("geanders/stormwindmodel")
 library(stormwindmodel)
 
-calc_closest_dist <- function(this_storm = "Floyd-1999"){
+## Interpolate storm tracks to every 15 minutes
+all_tracks <- hurr_tracks %>%
+  mutate(date_time = ymd_hm(date)) %>%
+  group_by(storm_id, usa_atcf_id) %>%
+  mutate(start_time = first(date_time)) %>%
+  mutate(track_time = difftime(date_time, first(date_time), units = "hours"),
+         track_time_simple = as.numeric(track_time)) %>%
+  ungroup() %>%
+  group_by(storm_id, usa_atcf_id, start_time) %>%
+  nest() %>%
+  mutate(interp_time = purrr::map(data, ~ seq(from = first(.x$track_time_simple),
+                                              to = last(.x$track_time_simple),
+                                              by = 0.25))) %>%
+  # Interpolate latitude and longitude using natural cubic splines
+  mutate(interp_lat = map2(data, interp_time,
+                           ~ interpolate_spline(x = .x$track_time_simple,
+                                                y = .x$latitude,
+                                                new_x = .y))) %>%
+  mutate(interp_lon = map2(data, interp_time,
+                           ~ interpolate_spline(x = .x$track_time_simple,
+                                                y = .x$longitude,
+                                                new_x = .y))) %>%
+  select(-data) %>%
+  unnest(interp_time:interp_lon) %>%
+  ungroup() %>%
+  mutate(date = start_time + minutes(60 * interp_time)) %>%
+  select(storm_id:usa_atcf_id, date, interp_lat:interp_lon) %>%
+  rename(tclon = interp_lon,
+         tclat = interp_lat)
+
+
+calc_closest_dist <- function(this_storm = "Katrina-2005"){
         print(this_storm)
-        storm_tracks <- subset(hurr_tracks, storm_id == this_storm)
-        # Linearly impute tracks to every 15 minutes
-        storm_tracks <- create_full_track(hurr_track = storm_tracks,
-                                          tint = 0.25) %>%
-                dplyr::mutate(tclon = -1 * tclon)
+        storm_tracks <- subset(all_tracks, storm_id == this_storm)
+        this_id <- storm_tracks$usa_atcf_id[1]
 
         # Calculate distance from county center to storm path
         storm_county_distances <- spDists(
@@ -46,8 +73,8 @@ calc_closest_dist <- function(this_storm = "Floyd-1999"){
                                storm_dist = min_dists) %>%
                 filter(state_name %in% study_states) %>%
                 mutate(closest_date = format(closest_date, "%Y%m%d%H%M"),
-                       storm_id = this_storm) %>%
-                select(storm_id, fips, closest_date, storm_dist)
+                       storm_id = this_storm, usa_atcf_id = this_id) %>%
+                select(storm_id, usa_atcf_id, fips, closest_date, storm_dist)
 
         return(closest_dist)
 }
