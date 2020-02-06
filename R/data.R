@@ -274,11 +274,11 @@
 #' Events that were near an Atlantic basin tropical storm in location and time.
 #' Only storms that came within 250 km of at least one US county were included.
 #' This database covered tornadoes and a few other types of events throughout
-#' the full period (1988-2015). Some event types were only included in the database
+#' the full period (1988--2018). Some event types were only included in the database
 #' for 1996 and later (e.g. flood events). See the documentation at the website
 #' listed in the sources for more information on this database.
 #'
-#' @format A list with 137 elements. Each element is named after a specific
+#' @format A list with 171 elements. Each element is named after a specific
 #'    tropical storm and is a dataframe with 2 variables:
 #' \describe{
 #'   \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
