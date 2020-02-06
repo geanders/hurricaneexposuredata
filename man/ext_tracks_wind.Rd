@@ -4,7 +4,7 @@
 \name{ext_tracks_wind}
 \alias{ext_tracks_wind}
 \title{Extended best tracks county wind speeds for historical storms}
-\format{A dataframe with 162,928 rows and 5 variables:
+\format{A dataframe with 203,660 rows and 5 variables:
 \describe{
   \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
              code}
@@ -26,8 +26,8 @@ HURDAT2 data were obtained from:
 ext_tracks_wind
 }
 \description{
-A dataframe with storm winds based on extended best tracks hurricane
-data for historical Atlantic basin storms.
+A dataframe with storm winds based on the wind radii in the extended
+best tracks hurricane data for historical Atlantic basin storms.
 }
 \details{
 To calculate the wind values in this dataset, we used the wind radii from
@@ -63,6 +63,7 @@ Press WH, Teukolsky SA, Vetterling WT, Flannery BP. 1992. Numerical Recipes in F
 The Art of Scientific Computing. Cambridge University Press.
 }
 \author{
-Andrea Schumacher \email{andrea.schumacher@colostate.edu}
+Brooke Anderson \email{brooke.anderson@colostate.edu}
+   Andrea Schumacher \email{andrea.schumacher@colostate.edu}
 }
 \keyword{datasets}

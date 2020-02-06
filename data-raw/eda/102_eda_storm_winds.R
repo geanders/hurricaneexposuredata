@@ -9,10 +9,11 @@ library(gridExtra)
 library(lubridate)
 
 data("storm_winds")
-data("ext_tracks_wind_new")
 data("ext_tracks_wind")
 data("hurr_tracks")
 data("county_centers")
+
+load("data-raw/eda/ext_tracks_wind_old.rda")
 
 ## Interpolate storm tracks to every 15 minutes
 track_interp <- hurr_tracks %>%
@@ -56,9 +57,9 @@ us_states <- states(cb = TRUE, resolution = "20m", class = "sf")
 map_wr_storm_winds <- function(this_storm_id = "Katrina-2005",
                                radii_based = TRUE, new = TRUE){
   if(radii_based & new){
-    wind_df <- ext_tracks_wind_new
-  } else if(radii_based & !new) {
     wind_df <- ext_tracks_wind
+  } else if(radii_based & !new) {
+    wind_df <- ext_tracks_wind_old
   } else {
     wind_df <- storm_winds %>%
       # Reset high winds down to 33 m/s to allow a good scale for comparison
@@ -108,6 +109,7 @@ map_wr_storm_winds <- function(this_storm_id = "Katrina-2005",
 }
 
 map_old_new_and_modeled <- function(this_storm_id = "Katrina-2005"){
+  print(this_storm_id)
   a <- map_wr_storm_winds(this_storm_id)
   b <- map_wr_storm_winds(this_storm_id, new = FALSE)
   c <- map_wr_storm_winds(this_storm_id, radii_based = FALSE)
@@ -126,4 +128,26 @@ storm_wind_maps <- purrr::map(storms, map_old_new_and_modeled)
 ggsave("data-raw/eda/storm_wr_winds_check_with_fortran.pdf",
        marrangeGrob(grobs = storm_wind_maps, nrow = 1, ncol = 1),
        width = 16, height = 6, units = "in")
+
+
+
+map_new_and_modeled <- function(this_storm_id = "Katrina-2005"){
+  print(this_storm_id)
+  a <- map_wr_storm_winds(this_storm_id)
+  c <- map_wr_storm_winds(this_storm_id, radii_based = FALSE)
+
+  d <- grid.arrange(a, c, nrow = 1,
+                    top = this_storm_id,
+                    bottom = "Modeled winds over 33 m/s were reset to 33 m/s for comparison")
+
+  return(d)
+}
+
+# Apply to all storms
+storms <- unique(track_interp$storm_id)
+storm_wind_maps <- purrr::map(storms, map_new_and_modeled)
+
+ggsave("data-raw/eda/storm_wr_winds_check.pdf",
+       marrangeGrob(grobs = storm_wind_maps, nrow = 1, ncol = 1),
+       width = 12, height = 6, units = "in")
 

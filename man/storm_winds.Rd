@@ -4,7 +4,7 @@
 \name{storm_winds}
 \alias{storm_winds}
 \title{Modeled county wind speeds for historical storms}
-\format{A dataframe with 325,856 rows and 6 variables:
+\format{A dataframe with 409,716 rows and 6 variables:
 \describe{
   \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
              code}
@@ -30,7 +30,7 @@ storm_winds
 }
 \description{
 A dataframe with modeled winds for historical tropical storms in the
-Atlantic basin for U.S. counties from 1988 to 2015. For each county,
+Atlantic basin for U.S. counties from 1988 to 2018. For each county,
 the given wind speed is that modeled at the county's population mean
 center (based on the 2010 U.S. Census).
 }

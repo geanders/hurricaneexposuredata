@@ -311,10 +311,10 @@
 
 #' Extended best tracks county wind speeds for historical storms
 #'
-#' A dataframe with storm winds based on extended best tracks hurricane
-#' data for historical Atlantic basin storms.
+#' A dataframe with storm winds based on the wind radii in the extended
+#' best tracks hurricane data for historical Atlantic basin storms.
 #'
-#' @format A dataframe with 162,928 rows and 5 variables:
+#' @format A dataframe with 203,660 rows and 5 variables:
 #' \describe{
 #'   \item{fips}{County's 5-digit Federal Information Processing Standard (FIPS)
 #'              code}
@@ -352,6 +352,7 @@
 #'    the storm.
 #'
 #' @author
+#'    Brooke Anderson \email{brooke.anderson@colostate.edu}
 #'    Andrea Schumacher \email{andrea.schumacher@colostate.edu}
 #'
 #' @source

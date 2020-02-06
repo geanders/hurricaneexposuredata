@@ -6,3 +6,4 @@ data-raw/nasa_precip_export_2.txt
 writing
 writing/*
 .DS_Store
+data-raw/eda/*.pdf

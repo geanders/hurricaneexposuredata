@@ -10,8 +10,9 @@
                  separated by a hyphen (e.g., "Alberto-1988",
                  "Katrina-2005"). Some storms are "Unnamed" or have other
                  generic names. In these cases, it may be preferable to identify
-                 the storm using the ATCF ID (\code{usa_atcf_id}) rather than
-                 the storm ID.}
+                 the storm using the first four characters of their
+                 ATCF ID (\code{usa_atcf_id}) and the storm season rather than
+                 the storm ID (e.g., 'AL13-1988').}
   \item{usa_atcf_id}{Character string with the Automated Tropical Cyclone
                  Forecasting System ID for the storm.}
   \item{fips}{Character string with the county's 5-digit Federal Information
