@@ -23,7 +23,6 @@ for(i in 1:length(storm_winds)){
   storm_track <- subset(hurr_tracks, usa_atcf_id == storms[i])
   winds <- get_grid_winds(hurr_track = storm_track,
                           grid_df = county_points) %>%
-    dplyr::select(-glat, -glon) %>%
     dplyr::rename(fips = gridid) %>%
     dplyr::mutate(usa_atcf_id = storms[i],
                   storm_id = storm_id_table$storm_id[storm_id_table$usa_atcf_id == storms[i]])
