@@ -4,8 +4,11 @@ library(noaastormevents)
 library(dplyr)
 
 data(hurr_tracks, package = "hurricaneexposuredata")
-storms <- unique(hurr_tracks$storm_id)
+storm_id_table <- hurr_tracks %>%
+  select(storm_id, usa_atcf_id) %>%
+  distinct()
 storm_years <- gsub(".+-", "", storm_id_table$storm_id)
+storms <- storm_id_table$storm_id
 
 storm_events <- vector("list", length(storms))
 names(storm_events) <- storms
