@@ -12,8 +12,8 @@ data(hurr_tracks)
 
 ## Read in data from HURDAT2
 
-# Bring in latest version of HURDAT2 (as of Feb. 4, 2020)
-hurdat2 <- read_lines("https://www.nhc.noaa.gov/data/hurdat/hurdat2-1851-2018-120319.txt")
+# Bring in latest version of HURDAT2 (as of May 15, 2022)
+hurdat2 <- read_lines("https://www.nhc.noaa.gov/data/hurdat/hurdat2-1851-2021-041922.txt")
 
 # Split into the rows with storm names (e.g., "AL011851") and those with storm data
 hurdat2_names <- hurdat2[str_detect(hurdat2, "AL[0-9]{6}.")]
